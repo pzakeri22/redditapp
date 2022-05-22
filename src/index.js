@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
-import Expenses from "./routes/expenses";
-import Invoices from "./routes/invoices";
+import WithComments from './postWithCommentsRoute/Container';
 
-
+// just holds the app, doesnt contain your code
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
@@ -22,13 +22,13 @@ root.render(
 
       <Routes>
         <Route path="/" element={<App />} />
-          <Route path="expenses" element={<Expenses />} />
-          <Route path="invoices" element={<Invoices />} />
-          <Route path="*" element={
-              <main style={{ padding: "1rem" }}>
-               <p>There's nothing here! Please go back and try again.</p>
-             </main>
-          }/>
+        {/* map each of routes below to what posts are returned from api */}
+        <Route path="WithComments" element={<WithComments />} />
+        <Route path="*" element={
+            <main style={{ padding: "1rem" }}>
+            <p>There's nothing here! Please go back and try again.</p>
+          </main>
+        } />
       </Routes>
 
     </React.StrictMode>

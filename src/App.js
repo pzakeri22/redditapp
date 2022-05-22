@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
+import Header from './header/Header';
+import ResultsContainer from './results/ResultsContainer';
 
-import {Link } from "react-router-dom";
 
 
 export default function App() {
   return (
-    
-    <div>
-      <h1>Bookkeeper!</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/invoices">Invoices</Link> |{" "}
-        <Link to="/expenses">Expenses</Link>
-      </nav>
+    <div class="grid">
+      <Header/>
+      <ResultsContainer/>
     </div>
   );
 }
 
+
+// const body = document.querySelector("body");
+// const scrollbar = window.innerWidth - body.clientWidth;
+// body.setAttribute("style", `--scrollbar: ${scrollbar}px`);
