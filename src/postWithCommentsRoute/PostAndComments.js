@@ -1,9 +1,9 @@
-import PostWithSubreddit from "./PostWithSubreddit";
-import Comments from "./Comments";
+import PostWithSubreddit from "./features/PostWithSubreddit";
+import Comments from "./features/Comments";
 
 export default function PostAndComments() {
     return (
-        <main className="results-container">
+        <main className="post-and-comments">
             <PostWithSubreddit/>
             <Comments/>
         </main>

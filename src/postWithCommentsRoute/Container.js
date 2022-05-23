@@ -1,11 +1,11 @@
 import Header from '../header/Header';
-import PostAndComments from './PostAndComments';
+import PostAndCommentsContainer from './PostAndCommentsContainer';
 
 export default function PostWithCommentsRoute() {
     return (
       <div class="grid">
         <Header/>
-        <PostAndComments/>
+        <PostAndCommentsContainer/>
       </div>
     );
 }

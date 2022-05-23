@@ -10,6 +10,12 @@ export default function Posts() {
             <Link to="/WithComments">  
                 <Post/>
             </Link>
+                <Post/>
+                <Post/>
+                <Post/>
+                <Post/>
+                <Post/>
+
         </section>
 
     );
