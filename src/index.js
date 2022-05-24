@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from './App.js';
+import reportWebVitals from './reportWebVitals.js';
 
 
 import {
@@ -9,7 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import WithComments from './postWithCommentsRoute/Container';
+import WithComments from './postWithCommentsRoute/Container.js';
 
 // just holds the app, doesnt contain your code
 const root = ReactDOM.createRoot(document.getElementById('root'));

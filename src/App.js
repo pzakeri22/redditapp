@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
-import Header from './header/Header';
-import ResultsContainer from './results/ResultsContainer';
+import Header from './header/Header.js';
+import ResultsContainer from './results/ResultsContainer.js';
 import './index.css';
 
 

@@ -1,5 +1,5 @@
-import Header from '../header/Header';
-import PostAndCommentsContainer from './PostAndCommentsContainer';
+import Header from '../header/Header.js';
+import PostAndCommentsContainer from './PostAndCommentsContainer.js';
 
 export default function PostWithCommentsRoute() {
     return (

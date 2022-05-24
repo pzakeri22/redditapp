@@ -1,4 +1,4 @@
-import Posts from './posts/Posts';
+import Posts from './posts/Posts.js';
 
 export default function ResultsContainer() {
     return (

@@ -1,4 +1,4 @@
-import Post from './Post';
+import Post from './Post.js';
 import {Link} from "react-router-dom";
 
 
@@ -16,6 +16,8 @@ export default function Posts() {
                 <Post/>
                 <Post/>
 
+            
+            
         </section>
 
     );

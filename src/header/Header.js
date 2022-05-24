@@ -1,5 +1,5 @@
-import LogoBar from './sections/LogoBar';
-import FilterSearch from './sections/FilterSearch'
+import LogoBar from './sections/LogoBar.js';
+import FilterSearch from './sections/FilterSearch.js'
 
 export default function Header() {
     return (

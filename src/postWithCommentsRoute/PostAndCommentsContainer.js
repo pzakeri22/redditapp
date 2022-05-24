@@ -1,4 +1,4 @@
-import PostAndComments from "./PostAndComments";
+import PostAndComments from "./PostAndComments.js";
 
 export default function PostAndCommentsContainer() {
     return (

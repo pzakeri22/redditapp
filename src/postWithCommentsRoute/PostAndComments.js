@@ -1,5 +1,5 @@
-import PostWithSubreddit from "./features/PostWithSubreddit";
-import Comments from "./features/Comments";
+import PostWithSubreddit from "./features/PostWithSubreddit.js";
+import Comments from "./features/Comments.js";
 
 export default function PostAndComments() {
     return (
