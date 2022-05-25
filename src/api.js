@@ -1,15 +1,21 @@
 import fetch from "node-fetch";
 
-async function getData() {
+export async function getData() {
     try {
         const response = await fetch("https://www.reddit.com/r/all.json");
         if (response.ok) {
             const jsonResponse = await response.json();
-            const jsonData = jsonResponse.data.children[0].data.created;
+            const jsonPosts = jsonResponse.data.children;
+            let jsonPostsData = [];  //array of objects containing data for each of the 25 posts
+            for (const post of jsonPosts) {
+                jsonPostsData.push(post.data);
+            }
+            console.log(jsonPostsData);
+            return jsonPostsData;
         }
         throw new Error('Request Failed!');
     } catch (error) {
-        console.log(`error = ${error}`);
+        console.log(`Error = ${error}`);
     }
 }
 
@@ -42,7 +48,6 @@ objectArray = jsonResponse.data.children
 
 if objectArray[0].kind = t3 (all of them are kind t3..) t3 means it is a link
 
-forEach()
 comments are not on main object. 
 
 title - "title": "Which option will be second least chosen? ",
@@ -88,4 +93,12 @@ new Date(1394104654000)
 subreddit - info only found on subreddit itself
 message - info only on messages themselves. (same as comments?)
 
+
+object.data.children[0].data
+
+{"kind": "Listing", "data": 
+    {"after": "t3_ux5hoc", "dist": 25, "modhash": "m9e8wv2bww06a9788e38791fe85981e75be89b68af9c20e284", "geo_filter": null, "children": 
+        [{"kind": "t3", "data": {"approved_at_utc":
+
 */
+
