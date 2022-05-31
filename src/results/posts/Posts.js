@@ -1,21 +1,42 @@
 import Post from './Post.js';
 import {Link} from "react-router-dom";
-import {getData} from '../../api.js';
+import {selectPostsStates2} from '../../postsSlice.js';
+import {useSelector, useDispatch} from 'react-redux';
+import {fetchPosts} from '../../api.js';
+import { useEffect } from 'react';
 
 
 export default function Posts() {
-    let posts = getData();
+    const posts = useSelector(selectPostsStates2);
+    const dispatch = useDispatch();
+
+    // {
+    //     "123": {title : xxx},
+    //     "124": {}
+    // }
+    
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, [fetchPosts]);
+    
+    let postsArray = [];
+    for (const post in posts) {
+        if (!posts[post].over_18 && !posts[post].spoiler) {
+            postsArray.push(<Post key={post} post={posts[post]}/>);
+        }
+    }
+
+    
+
 
     return (
         <section className="posts">
-            {/* <p>Posts</p> */}
 
-            <Link to="/WithComments">  
-            {/* "permalink": "/r/mildlyinfuriating/comments/u5ph5l/rmildlyinfuriating_predictions_tournament_1/" */}
-                {posts.map((post, index) => {<Post/>})}
-                
-                
+            <Link to="/PostWithCommentsRoute">  
 
+                {/* "permalink": "/r/mildlyinfuriating/comments/u5ph5l/rmildlyinfuriating_predictions_tournament_1/" */}
+
+                {/* {posts.map((post, index) => {<Post/>})} */}
                 {/* 
                 if (over 18) {
                     return "NSFW - over 18 - "over_18"
@@ -26,18 +47,16 @@ export default function Posts() {
                     thumbs up/down - "score": 20012,
                     time posted - "created"
                     no. comments, "num_comments"
-                     "subreddit": "mildlyinfuriating"
-
-
-
+                    "subreddit": "mildlyinfuriating"
                 
                 */}
+                {postsArray}
+                {/* <Post/> */}
             </Link>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
+            {/* <Post/> */}
+            {/* <Post/>
+            <Post/>
+            <Post/> */}
 
             
             

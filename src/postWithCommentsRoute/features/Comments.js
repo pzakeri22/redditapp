@@ -1,4 +1,5 @@
 import Comment from "./Comment.js";
+import {useSelector, useDispatch} from 'react-redux';
 
 export default function Comments() {
     return (

@@ -2,36 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.js';
 import reportWebVitals from './reportWebVitals.js';
+import store from './store.js';
+import {Provider} from 'react-redux';
 
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
-import WithComments from './postWithCommentsRoute/Container.js';
+import PostWithCommentsRoute from './postWithCommentsRoute/Container.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
+  <Provider store={store}>
 
-  <BrowserRouter>
+<BrowserRouter>
 
-    <React.StrictMode> 
+<React.StrictMode> 
 
-      <Routes>
-        <Route path="/" element={<App />} />
-        {/* map each of routes below to what posts are returned from api */}
-        <Route path="WithComments" element={<WithComments />} />
-        <Route path="*" element={
-            <main style={{ padding: "1rem" }}>
-            <p>There's nothing here! Please go back and try again.</p>
-          </main>
-        } />
-      </Routes>
+  <Routes>
 
-    </React.StrictMode>
+    <Route path="/" element={<App />} />
+    {/* map each of routes below to what posts are returned from api */}
+    <Route path="/PostWithCommentsRoute" element={<PostWithCommentsRoute/>} />
+    <Route path="*" element={
+        <main style={{ padding: "1rem" }}>
+        <p>There's nothing here! Please go back and try again.</p>
+      </main>
+    } />
 
-  </BrowserRouter>
+  </Routes>
+
+</React.StrictMode>
+
+</BrowserRouter>
+
+ </Provider>
+
 
 );
 

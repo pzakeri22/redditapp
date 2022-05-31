@@ -1,28 +1,172 @@
-import fetch from "node-fetch";
+import {createAsyncThunk} from '@reduxjs/toolkit';
 
-export async function getData() {
+export const fetchPosts = createAsyncThunk(
+    'posts/loadData',
+    async (thunkAPI) => {  //could thunkAPI be reason for 
+        const jsonResponse = await fetch("https://www.reddit.com/r/all.json");
+        const response = await jsonResponse.json();
+        const posts = response.data.children;
+        let postsData = {};  //array of objects containing data for each of the 25 posts
+        for (const post of posts) {
+            const media = post.data.media;
+            console.log(post.data.post_hint);
+            postsData[post.data.id] = {
+                id : post.data.id, 
+                over_18 : post.data.over_18, 
+                spoiler: post.data.spoiler,
+                title : post.data.title,
+                type: post.data.post_hint,
+                is_video : post.data.is_video,
+                video_link : (media && !('oembed' in media)? media.reddit_video.fallback_url : ""),
+                video_height : (media && !('oembed' in media)? media.reddit_video.height : ""),
+                video_width : (media && !('oembed' in media)? media.reddit_video.width : ""),
+                image_or_link : post.data.url,
+                score : post.data.score,
+                time : post.data.created,
+                no_comments : post.data.num_comments,
+                subreddit : post.data.subreddit,
+                link_extension : post.data.permalink,
+            };
+        }
+        return postsData;
+    } 
+)
+
+/*
+on article post;
+//thumbnail: default under link to article post. vs thumbnail with url
+
+"permalink": "/r/news/comments/v0zded/a_9yearold_describes_escaping_through_a_window/",
+"gildings": {
+                    "gid_1": 1
+                },
+"post_hint": "link",
+"domain": "cnn.com",
+                    "url_overridden_by_dest": "https://www.cnn.com/2022/05/30/us/uvalde-texas-elementary-school-shooting-monday/index.html",
+                    "url": "https://www.cnn.com/2022/05/30/us/uvalde-texas-elementary-school-shooting-monday/index.html",
+
+
+on image post;
+                    "permalink": "/r/WhitePeopleTwitter/comments/v0yule/and_this_continues_and_nothing_happened/",
+"gildings": {},
+"post_hint": "image",
+                    "url_overridden_by_dest": "https://i.redd.it/28ln7aa4ul291.png",
+                    "url": "https://i.redd.it/28ln7aa4ul291.png",
+
+
+"domain": "i.redd.it",
+
+
+*/
+
+
+async function fetchComments(post) { //post = /r/aww/comments/uyp0n2/an_elephant_family_is_sleeping_photographed_by_a/
     try {
-        const response = await fetch("https://www.reddit.com/r/all.json");
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            const jsonPosts = jsonResponse.data.children;
-            let jsonPostsData = [];  //array of objects containing data for each of the 25 posts
-            for (const post of jsonPosts) {
-                jsonPostsData.push(post.data);
+        const jsonResponse = await fetch(`https://www.reddit.com${post}.json`);
+        if (jsonResponse.ok) {
+            const response = await jsonResponse.json();
+            const comments = response[1].data.children //w/ot replies
+            let commentsData = {};  //array of objects containing data for each of the 25 posts
+            for (const comment of comments) {
+                const info = comment.data;
+                commentsData[comment.data.id] = {
+                    id : info.id, 
+                    author: info.author,
+                    time: info.created,
+                    score: info.score,
+                    text: info.body,
+                    text_html: info.body_html,
+                    extension: info.permalink,
+                };
             }
-            console.log(jsonPostsData);
-            return jsonPostsData;
+            console.log(commentsData);
+            return commentsData;
         }
         throw new Error('Request Failed!');
-    } catch (error) {
-        console.log(`Error = ${error}`);
-    }
+        } catch (error) {
+            console.log(`Error = ${error}`);
+        }
 }
 
-getData();
+/*
+    if (over 18) {
+        return "NSFW - over 18 - "over_18"
+    }
+    id = index.
+    title - "title": "Which option will be second least chosen? ",
+        image/videos - "thumbnail"/"media"/"media_embed/  "https://b.thumbs.redditmedia.com/55bJiOJP6u7rtuY5dpLxHem6YQAi55w1K5u3xCEt-Yk.jpg",
+
+"media_only
+"
+        thumbs up/down - "score": 20012,
+        time posted - "created"
+        no. comments, "num_comments"
+            "subreddit": "mildlyinfuriating"
+*/
+
+// {
+//     post.data.name: {post.data},
+// }
+
+
+// export const fetchPostData = createAsyncThunk {
+//     'posts/loadData',
+//     async (thunkAPI) => {
+//         const response = await fetch("https://www.reddit.com/r/all.json");
+//         const jsonResponse = await response.json();
+//         const jsonPosts = jsonResponse.data.children;
+//         let jsonPostsData = [];  //array of objects containing data for each of the 25 posts
+//         for (const post of jsonPosts) {
+//             jsonPostsData.push(post.data);
+//         }
+//         console.log(jsonPostsData);
+//         return jsonPostsData;
+//     }
+// }
+
+
+//  async function fetchPosts() {
+//     try {
+//         const response = await fetch("https://www.reddit.com/r/all.json");
+//         if (response.ok) {
+//             const response = await response.json();
+//             const posts = response.data.children;
+//             let postsData = {};  //array of objects containing data for each of the 25 posts
+//             for (const post of posts) {
+//                 const media = post.data.media;
+//                 postsData[post.data.name] = {
+//                     id : post.data.id, //maybe not needed if name works?
+//                     over_18 : post.data.over_18, 
+//                     title : post.data.title,
+//                     is_video : post.data.is_video,
+//                     video_link : (media ? media.reddit_video.fallback_url : ""),
+//                     video_height : (media ? media.reddit_video.height : ""),
+//                     video_width : (media ? media.reddit_video.width : ""),
+//                     image : post.data.url,
+//                     score : post.data.score,
+//                     time : post.data.created,
+//                     no_comments : post.data.num_comments,
+//                     subreddit : post.data.subreddit,
+//                     link_extension : post.data.permalink
+//                 };
+//             }
+//             console.log(postsData);
+//             return postsData;
+//         }
+//          throw new Error('Request Failed!');
+//     } catch (error) {
+//         console.log(`Error = ${error}`);
+//     }
+// }
 
 
 /* 
+
+not using:
+                        image1 : post.data.url_overridden_by_dest,  - same as post.data.url
+                        name : post.data.name - same as id but with prefix
+
+
 Time;
 const jsonData = jsonResponse.data.children[0].data.created
             const milliseconds = jsonData*1000;
@@ -43,10 +187,6 @@ const jsonData = jsonResponse.data.children[0].data.created
 // "type": "module" -  I added this to package.json file to get fetch to work.
 
 /*
-
-objectArray = jsonResponse.data.children
-
-if objectArray[0].kind = t3 (all of them are kind t3..) t3 means it is a link
 
 comments are not on main object. 
 
@@ -93,12 +233,6 @@ new Date(1394104654000)
 subreddit - info only found on subreddit itself
 message - info only on messages themselves. (same as comments?)
 
-
-object.data.children[0].data
-
-{"kind": "Listing", "data": 
-    {"after": "t3_ux5hoc", "dist": 25, "modhash": "m9e8wv2bww06a9788e38791fe85981e75be89b68af9c20e284", "geo_filter": null, "children": 
-        [{"kind": "t3", "data": {"approved_at_utc":
 
 */
 

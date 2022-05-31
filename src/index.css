@@ -63,7 +63,8 @@ header {
 }
 
 .logo-bar img {
-  height: 5vh;
+  height: 4.5vh;
+  min-height: 30px;;
   max-height: 10rem;
 }
 
@@ -143,4 +144,11 @@ header {
 
 .comment {
 
+}
+
+.post video {
+  height: 75vh;
+  max-height: 500px;
+  width: 100%;
+  background-color: black;
 }

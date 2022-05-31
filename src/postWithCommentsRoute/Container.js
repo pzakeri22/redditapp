@@ -3,7 +3,7 @@ import PostAndCommentsContainer from './PostAndCommentsContainer.js';
 
 export default function PostWithCommentsRoute() {
     return (
-      <div class="grid">
+      <div className="grid">
         <Header/>
         <PostAndCommentsContainer/>
       </div>
