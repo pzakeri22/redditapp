@@ -6,7 +6,7 @@ export default function LogoBar() {
         <section className="logo-bar">
 
             <Link to="/">
-                <img src="imageBank/redditfulllogo.png" alt="reddit logo"/>
+                <img src="../../../../../imageBank/redditfulllogo.png" alt="reddit logo"/>
             </Link>
 
         </section>

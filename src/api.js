@@ -9,7 +9,6 @@ export const fetchPosts = createAsyncThunk(
         let postsData = {};  //array of objects containing data for each of the 25 posts
         for (const post of posts) {
             const media = post.data.media;
-            console.log(post.data.post_hint);
             postsData[post.data.id] = {
                 id : post.data.id, 
                 over_18 : post.data.over_18, 
@@ -30,6 +29,29 @@ export const fetchPosts = createAsyncThunk(
         }
         return postsData;
     } 
+)
+
+export const fetchComments = createAsyncThunk( //post = /r/aww/comments/uyp0n2/an_elephant_family_is_sleeping_photographed_by_a/
+    'comments/loadComments',
+    async (post, thunkAPI) => { 
+        const jsonResponse = await fetch(`https://www.reddit.com${post}.json`);
+        const response = await jsonResponse.json();
+        const comments = response[1].data.children //w/ot replies
+        let commentsData = {};  //array of objects containing data for each of comments which arent replies
+        for (const comment of comments) {
+            const info = comment.data;
+            commentsData[comment.data.id] = {
+                id : info.id, 
+                author: info.author,
+                time: info.created,
+                score: info.score,
+                text: info.body,
+                text_html: info.body_html,
+                extension: info.permalink,
+            };
+        }
+        return commentsData;
+    }
 )
 
 /*
@@ -58,35 +80,6 @@ on image post;
 
 
 */
-
-
-async function fetchComments(post) { //post = /r/aww/comments/uyp0n2/an_elephant_family_is_sleeping_photographed_by_a/
-    try {
-        const jsonResponse = await fetch(`https://www.reddit.com${post}.json`);
-        if (jsonResponse.ok) {
-            const response = await jsonResponse.json();
-            const comments = response[1].data.children //w/ot replies
-            let commentsData = {};  //array of objects containing data for each of the 25 posts
-            for (const comment of comments) {
-                const info = comment.data;
-                commentsData[comment.data.id] = {
-                    id : info.id, 
-                    author: info.author,
-                    time: info.created,
-                    score: info.score,
-                    text: info.body,
-                    text_html: info.body_html,
-                    extension: info.permalink,
-                };
-            }
-            console.log(commentsData);
-            return commentsData;
-        }
-        throw new Error('Request Failed!');
-        } catch (error) {
-            console.log(`Error = ${error}`);
-        }
-}
 
 /*
     if (over 18) {

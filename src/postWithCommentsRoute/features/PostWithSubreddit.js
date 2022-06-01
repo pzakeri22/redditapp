@@ -1,8 +1,20 @@
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import { useEffect } from 'react';
 
 export default function PostWithSubreddit() {
+    // end of url - extract id
+    // use selector to get that post by its IdleDeadline.apply
+
+    let postId;
+
+    useEffect(() => {
+        const parametersArray = window.location.href.split('/');
+        postId = parametersArray[3];
+    }, []);
+
     return (
         <section className="post-with-subreddit">
+            <p>Profile for {postId}</p>
             <p>Post title</p>
             <p>Subreddit</p>
             <p>Post info</p>

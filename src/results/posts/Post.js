@@ -1,31 +1,39 @@
-import {selectPostsStates, selectPostsStates2} from '../../postsSlice.js';
-import postsReducer from '../../postsSlice.js';
-import {fetchPosts} from '../../api.js';
-import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import {timeAgo} from './../../calculations.js';
+import {Link, useNavigate} from "react-router-dom";
 
-//dispatch(action(argument));
+export default function Post(props) {
+    
+    const {key, post} = props;
+    let navigate = useNavigate();
 
-export default function Post({key, post}) {
+    let content;
 
-let content;
     switch (post.type) {
         case "hosted:video": {
-            content = (<video controls>
+            content = (
+            <video controls
+                className="video"
+            >
                 <source src={post.video_link} type="video/mp4"/>
                 Your browser does not support the video tag.
-            </video>);
+            </video>
+            );
             break;
         }
         case "link": {
-            content = (<p className="external-link">
-                External link: {post.image_or_link}
-            </p>);
+            content = (
+            <a href={post.image_or_link}
+                className="external-link" style={{fontStyle: "italic"}}>
+                    {post.image_or_link}
+            </a>
+            );
             break;
         }
         case "image": {
-            content = (<img src={post.image_or_link} alt=""/>);
+            content = (
+                <img src={post.image_or_link} alt=""/>
+            );
             break;
         }
         default: {
@@ -33,17 +41,42 @@ let content;
         }
     }
 
-    
     return (
-        <section className="post">
-            {/* {getPostData("/r/aww/comments/uyp0n2/an_elephant_family_is_sleeping_photographed_by_a/")} */}
+     <section className="post red"
+        onClick={e => {
+            if (e.target !== e.currentTarget) {
+                if (["video", "external-link"].includes(e.target.className)) {
+                    console.log(e.target.className);
+                    return;
+                }
+                navigate(post.link_extension);
+            }
+        }}
+        style={{cursor: "pointer"}}
+        tabIndex="1"
+    >
+        <div className="post-container">
             <h1>{post.title}</h1>
-            <p className>Subreddit: {post.subreddit}</p>
+            <p className="subreddit">Subreddit: {post.subreddit}</p>
             {content}
-            <div className="score">Score: {post.score}</div>
-            <div className="time">{timeAgo(post.time)}</div>
-            <div className="comments">{post.no_comments}</div>
-        </section>
+            <div>
+                <div className="score">Score: {post.score}</div>
+                <div className="time">{timeAgo(post.time)}</div>
+                <div className="comments">Comments: {post.no_comments}</div>
+            </div>
+        </div>
+    </section>
     );
 
 }
+/*
+        <Link className="postcontainer"
+        to="/PostWithCommentsRoute"
+
+        <div 
+        onClick={() => window.location='http://localhost:3000/PostWithCommentsRoute'}
+        style={{cursor: "pointer"}}
+        >
+
+        this.props.history.push('/fff')
+*/
