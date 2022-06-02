@@ -28,7 +28,7 @@ export default function App() {
 
   useEffect(() => {
     for (const post in posts) {
-      if (!posts[post].over_18 && !posts[post].spoiler) {
+      if (!posts[post].over_18 && !posts[post].spoiler && !posts[post].tournament && !posts[post].contest) {
         postsArray.push(
           <Route 
             path={`/${posts[post].link_extension}`} 

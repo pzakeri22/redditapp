@@ -42,7 +42,7 @@ export default function Post(props) {
     }
 
     return (
-     <section className="post red"
+     <section className="post"
         onClick={e => {
             if (e.target !== e.currentTarget) {
                 if (["video", "external-link"].includes(e.target.className)) {
@@ -55,7 +55,7 @@ export default function Post(props) {
         style={{cursor: "pointer"}}
         tabIndex="1"
     >
-        <div className="post-container">
+        <div className="container">
             <h1>{post.title}</h1>
             <p className="subreddit">Subreddit: {post.subreddit}</p>
             {content}

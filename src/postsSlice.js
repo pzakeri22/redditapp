@@ -6,7 +6,13 @@ const postsSlice = createSlice({
     initialState: {
         posts: {},
         isLoading: false,
-        hasError: false
+        hasError: false,
+        currentPostId: ""
+    },
+    reducers: {
+      currentPost: (state, action) => {
+          state.currentPostId = action.payload;
+      }  
     },
     extraReducers: {
         [fetchPosts.pending]: (state, action) => {
@@ -25,8 +31,9 @@ const postsSlice = createSlice({
     }
 })
 
-export const selectPostsStates = state => state.posts;
+export const selectCurrentPost = state => state.posts.currentPostId;
 export const selectPostsStates2 = state => state.posts.posts;
+export const addCurrentPost = postsSlice.actions.currentPost;
 export default postsSlice.reducer;
 /* 
 export selectors 

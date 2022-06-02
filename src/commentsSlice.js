@@ -1,11 +1,7 @@
+import {fetchComments} from './api.js';
+import {createSlice} from '@reduxjs/toolkit';
 /* 
-export selectors 
-export const selectIsCompleteIDs = state => state.todos.filter(
-  todo => todo.isComplete).map(todo => todo.id)
-
-export default XXX.reducer
 export action creators - export const { addTodo, toggleTodo } = todosSlice.actions
-*/
 
 // name: 'todos',
 // reducer: (state, action) => newState,
@@ -16,27 +12,31 @@ export action creators - export const { addTodo, toggleTodo } = todosSlice.actio
 
 //Case reducers should have a name that corresponds to an action type the slice can handle, e.g.;
 // dispatch(loadData()); - useeffect
-
-import {fetchPostData} from './api.js';
-import {createSlice} from '@reduxjs/toolkit';
-
+*/
 
 const commentsSlice = createSlice({
     name: "comments",
-    initialState: [
-        {
-
+    initialState: {
+        comments: {},
+        isLoading: false,
+        hasError: false
+    },
+    extraReducers: {
+        [fetchComments.pending]: (state, action) => {
+            state.isLoading = true;
+            state.hasError = false;
         },
-        {
-        
+        [fetchComments.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.hasError = false;
+            state.comments = action.payload;
         },
-    ],
-    reducers: {
-        loadData: (state, action) => {
-            return action.payload;
-        },
-
-        
+        [fetchComments.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.hasError = true;
+        }
     }
-
 })
+
+export const selectComments = state => state.comments.comments;
+export default commentsSlice.reducer;

@@ -20,7 +20,10 @@ export default function Posts() {
     // }
     let postsArray = [];
     for (const post in posts) {
-        if (!posts[post].over_18 && !posts[post].spoiler) {
+        
+
+        if (!posts[post].over_18 && !posts[post].spoiler && !posts[post].tournament && !posts[post].contest) {
+        // if (!posts[post].over_18 && !posts[post].spoiler && !posts[post].tournament && !posts[post].contest) {
             postsArray.push(<Post key={post} post={posts[post]}/>);
         }
     }

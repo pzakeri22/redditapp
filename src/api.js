@@ -13,6 +13,8 @@ export const fetchPosts = createAsyncThunk(
                 id : post.data.id, 
                 over_18 : post.data.over_18, 
                 spoiler: post.data.spoiler,
+                tournament: post.data.tournament_data,
+                contest: post.data.contest_mode,
                 title : post.data.title,
                 type: post.data.post_hint,
                 is_video : post.data.is_video,
@@ -40,8 +42,9 @@ export const fetchComments = createAsyncThunk( //post = /r/aww/comments/uyp0n2/a
         let commentsData = {};  //array of objects containing data for each of comments which arent replies
         for (const comment of comments) {
             const info = comment.data;
-            commentsData[comment.data.id] = {
-                id : info.id, 
+            const commentId = info.id;
+            commentsData[commentId] = {
+                comment_id : commentId, 
                 author: info.author,
                 time: info.created,
                 score: info.score,
