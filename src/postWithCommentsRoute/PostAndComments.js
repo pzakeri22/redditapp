@@ -17,11 +17,7 @@ export default function PostAndComments() {
     const dispatch = useDispatch();
     const url = window.location.href;
     const urlExtension = `/r/${url.split('/r/')[1]}`;
-    console.log(urlExtension);
     const postId = url.split('/')[6];
-
-    const test = "t3_uyp0n2";
-    console.log(test.split("_")[1]);
 
     useEffect(() => {
         dispatch(addCurrentPost(postId));

@@ -23,7 +23,8 @@ export default function Posts() {
         
 
         if (!posts[post].over_18 && !posts[post].spoiler && !posts[post].tournament && !posts[post].contest) {
-        // if (!posts[post].over_18 && !posts[post].spoiler && !posts[post].tournament && !posts[post].contest) {
+
+            //if filter, filter posts
             postsArray.push(<Post key={post} post={posts[post]}/>);
         }
     }

@@ -10,8 +10,10 @@ export default function Comments({postId}) {
 
     let commentsArray = [];
     for (const comment in comments) {
-        if ( !(comments[comment].text).includes("[deleted]") && !(comments[comment].text).includes("[removed]") ) {
-            commentsArray.push(<Comment key={comment} comment={comments[comment]} />)
+        // console.log(comments[comment].text);
+        console.log((comments[comment].text))
+        if ( comments[comment].text && !(comments[comment].text).includes("[deleted]") && !(comments[comment].text).includes("[removed]") ) {
+            commentsArray.push(<Comment key={comment} comment={comments[comment]} />);
         }
     }
 
