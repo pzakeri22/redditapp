@@ -4,7 +4,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import {fetchPosts} from '../../api.js';
 import React, { useEffect } from 'react';
 import { selectArePostsLoading, selectPostsError } from '../../postsSlice.js';
-import postErrorImage from "./post-error.png";
 
 
 export default function Posts() {
@@ -44,8 +43,8 @@ export default function Posts() {
     if (postsError) {
         return (
             <section className="posts-error">
-                <img src={postErrorImage} className="error-image" alt="error"/>
-                <p className="pending-text">Error occurred whilst loading posts.
+                <img src='/imageBank/post-error.png' alt="error"/>
+                <p>Error occurred whilst loading posts.
                 <br/>Please go back and try again.</p>
             </section>
         )

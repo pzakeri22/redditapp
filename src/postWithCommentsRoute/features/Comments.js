@@ -3,14 +3,15 @@ import {useSelector, useDispatch} from 'react-redux';
 import {fetchComments} from '../../api.js';
 import { useEffect } from 'react';
 import {selectComments, selectAreCommentsLoading, selectCommentsError} from '../../commentsSlice.js';
-import postErrorImage from '../../results/posts/
 
 export default function Comments({urlExtension}) {
 
     const dispatch = useDispatch();
     const comments = useSelector(selectComments);
     const commentsLoading = useSelector(selectAreCommentsLoading);
-    const commentsError = useSelector(selectCommentsError);
+    // const commentsLoading = true;
+    // const commentsError = useSelector(selectCommentsError);
+    const commentsError = true;
 
     useEffect(() => {
         dispatch(fetchComments(urlExtension));
@@ -27,7 +28,7 @@ export default function Comments({urlExtension}) {
         return (
             <section className="comments-loading"> 
                 <div className="spinner"></div> 
-                <p className="pending-text">Loading posts...</p>
+                <p>Loading posts...</p>
             </section>
         )
     }
@@ -36,15 +37,15 @@ export default function Comments({urlExtension}) {
     if (commentsError) {
         return (
             <section className="comments-error">
-                <img src={postErrorImage} className="error-image" alt="error"/>
-                <p className="pending-text">Error occurred whilst loading posts.
+                <img src='/imageBank/post-error.png' alt="error"/>
+                <p className="pending-text">Error loading comments.
                 <br/>Please go back and try again.</p>
             </section>
         )
     } 
     
     return (
-        <section className="fullcomments">
+        <section className="comments">
             {commentsArray}
         </section>
     );

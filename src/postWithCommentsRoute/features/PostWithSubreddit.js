@@ -49,7 +49,7 @@ export default function PostWithSubreddit({postId}) {
                 <div>
                     <div className="score">Score: {post.score}</div>
                     <div className="time">{timeAgo(post.time)}</div>
-                    <div className="comments">Comments: {post.no_comments}</div>
+                    <div className="no-comments">Comments: {post.no_comments}</div>
                 </div>
             </div>
         

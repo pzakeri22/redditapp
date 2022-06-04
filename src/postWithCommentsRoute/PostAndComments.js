@@ -26,7 +26,7 @@ export default function PostAndComments() {
     return (
         <main className="post-and-comments">
             <PostWithSubreddit postId={postId}/>
-            <Comments url={urlExtension}/>
+            <Comments urlExtension={urlExtension}/>
         </main>
     );
 }
