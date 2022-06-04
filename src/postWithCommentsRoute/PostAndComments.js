@@ -21,13 +21,12 @@ export default function PostAndComments() {
 
     useEffect(() => {
         dispatch(addCurrentPost(postId));
-        dispatch(fetchComments(urlExtension));
     }, []);
 
     return (
         <main className="post-and-comments">
             <PostWithSubreddit postId={postId}/>
-            <Comments postId={postId}/>
+            <Comments url={urlExtension}/>
         </main>
     );
 }

@@ -7,12 +7,20 @@ const postsSlice = createSlice({
         posts: {},
         isLoading: false,
         hasError: false,
-        currentPostId: ""
+        currentPostId: "",
+        filter: "",
+        category: ""
     },
     reducers: {
       currentPost: (state, action) => {
           state.currentPostId = action.payload;
-      }  
+      },
+      filter: (state, action) => {
+          state.filter = action.payload;
+      },
+      category: (state, action) => {   // newest; time posted, top: score, hot: most comments, default
+          state.category = action.payload;
+      } 
     },
     extraReducers: {
         [fetchPosts.pending]: (state, action) => {
@@ -33,6 +41,9 @@ const postsSlice = createSlice({
 
 export const selectCurrentPost = state => state.posts.currentPostId;
 export const selectPostsStates2 = state => state.posts.posts;
+export const selectArePostsLoading = state => state.posts.isLoading;
+export const selectPostsError = state => state.posts.hasError;
+
 export const addCurrentPost = postsSlice.actions.currentPost;
 export default postsSlice.reducer;
 /* 
