@@ -1,17 +1,10 @@
-import { useEffect } from 'react';
 import {timeAgo} from './../../calculations.js';
-import {Link, useNavigate} from "react-router-dom";
-import { selectArePostsLoading, selectPostsError } from '../../postsSlice.js';
-import { useSelector } from 'react-redux';
-
-
+import {useNavigate} from "react-router-dom";
 
 export default function Post(props) {
     
     const {key, post} = props;
     let navigate = useNavigate();
-    const postsLoading = useSelector(selectArePostsLoading);
-    const postsError = useSelector(selectPostsError);
 
     let content;
 

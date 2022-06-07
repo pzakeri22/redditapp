@@ -10,8 +10,8 @@ export default function Comments({urlExtension}) {
     const comments = useSelector(selectComments);
     const commentsLoading = useSelector(selectAreCommentsLoading);
     // const commentsLoading = true;
-    // const commentsError = useSelector(selectCommentsError);
-    const commentsError = true;
+    const commentsError = useSelector(selectCommentsError);
+    // const commentsError = true;
 
     useEffect(() => {
         dispatch(fetchComments(urlExtension));
@@ -28,7 +28,7 @@ export default function Comments({urlExtension}) {
         return (
             <section className="comments-loading"> 
                 <div className="spinner"></div> 
-                <p>Loading posts...</p>
+                <p>Loading comments...</p>
             </section>
         )
     }
@@ -38,7 +38,7 @@ export default function Comments({urlExtension}) {
         return (
             <section className="comments-error">
                 <img src='/imageBank/post-error.png' alt="error"/>
-                <p className="pending-text">Error loading comments.
+                <p>Error loading comments.
                 <br/>Please go back and try again.</p>
             </section>
         )

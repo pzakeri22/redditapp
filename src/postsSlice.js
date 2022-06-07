@@ -9,7 +9,7 @@ const postsSlice = createSlice({
         hasError: false,
         currentPostId: "",
         filter: "",
-        category: ""
+        sort: ""
     },
     reducers: {
       currentPost: (state, action) => {
@@ -18,8 +18,8 @@ const postsSlice = createSlice({
       filter: (state, action) => {
           state.filter = action.payload;
       },
-      category: (state, action) => {   // newest; time posted, top: score, hot: most comments, default
-          state.category = action.payload;
+      sort: (state, action) => {   // newest; time posted, top: score, hot: most comments, default
+          state.sort = action.payload;
       } 
     },
     extraReducers: {
@@ -43,8 +43,13 @@ export const selectCurrentPost = state => state.posts.currentPostId;
 export const selectPostsStates2 = state => state.posts.posts;
 export const selectArePostsLoading = state => state.posts.isLoading;
 export const selectPostsError = state => state.posts.hasError;
+export const selectFilter = state => state.posts.filter;
+export const selectSort = state => state.posts.sort;
 
+export const filterPosts = postsSlice.actions.filter;
+export const sortPosts = postsSlice.actions.sort;
 export const addCurrentPost = postsSlice.actions.currentPost;
+
 export default postsSlice.reducer;
 /* 
 export selectors 
