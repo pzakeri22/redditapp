@@ -1,8 +1,8 @@
 import Comment from "./Comment.js";
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchComments} from '../../api.js';
+import {fetchComments} from '../../states/api.js';
 import { useEffect } from 'react';
-import {selectComments, selectAreCommentsLoading, selectCommentsError} from '../../commentsSlice.js';
+import {selectComments, selectAreCommentsLoading, selectCommentsError} from '../../states/commentsSlice.js';
 
 export default function Comments({urlExtension}) {
 
@@ -19,7 +19,7 @@ export default function Comments({urlExtension}) {
 
     let commentsArray = [];
     for (const comment in comments) {
-        if ( comments[comment].text && !(comments[comment].text).includes("[deleted]") && !(comments[comment].text).includes("[removed]") ) {
+        if ( comments[comment].text && !(comments[comment].text).includes("[deleted]") && !(comments[comment].text).includes("[removed]") && !(comments[comment].author).includes("Mod")) {
             commentsArray.push(<Comment key={comment} comment={comments[comment]} />);
         }
     }
@@ -46,6 +46,7 @@ export default function Comments({urlExtension}) {
     
     return (
         <section className="comments">
+            <h1>Comments</h1>
             {commentsArray}
         </section>
     );

@@ -1,4 +1,4 @@
-import {timeAgo} from './../../calculations.js';
+import {timeAgo} from './calculations.js';
 import {useNavigate} from "react-router-dom";
 
 export default function Post(props) {
@@ -31,7 +31,7 @@ export default function Post(props) {
         }
         case "image": {
             content = (
-                <img src={post.image_or_link} alt=""/>
+                <img src={post.image_or_link} className="main-image" alt=""/>
             );
             break;
         }
@@ -58,10 +58,19 @@ export default function Post(props) {
             <h1>{post.title}</h1>
             <p className="subreddit">Subreddit: {post.subreddit}</p>
             {content}
-            <div>
-                <div className="score">Score: {post.score}</div>
-                <div className="time">{timeAgo(post.time)}</div>
-                <div className="no-comments">Comments: {post.no_comments}</div>
+            <div className="additional">
+                <div className="score">
+                    <img src="/imageBank/thumbsup2.png" alt="thumbs up"/>
+                    {post.score}
+                </div>
+                <div className="time">
+                    <img src="/imageBank/wall-clock.png" alt="thumbs up"/>
+                    {timeAgo(post.time)}
+                </div>
+                <div className="no-comments">
+                    <img src="/imageBank/comment3.png" alt="speech bubble"/>
+                    <p>{post.no_comments}</p>
+                </div>
             </div>
         </div>
     </section>

@@ -3,13 +3,12 @@ import Comments from "./features/Comments.js";
 import { useParams } from "react-router-dom";
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
-import {addCurrentPost, selectCurrentPost } from '../postsSlice.js';
-import {fetchComments} from '../api.js'
+import {addCurrentPost, selectCurrentPost } from '../states/postsSlice.js';
+import {fetchComments} from '../states/api.js'
 
 
 export default function PostAndComments() {
-
-  // {
+    // {
     //     "123": {title : xxx},
     //     "124": {}
     // }

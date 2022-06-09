@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
-import {timeAgo} from '../../calculations.js';
-import {selectPostsStates2} from './../../postsSlice.js';
+import {timeAgo} from '../../postsHomepage/posts/calculations.js';
+import {selectPostsStates2} from '../../states/postsSlice.js';
 
 export default function PostWithSubreddit({postId}) {
 
@@ -31,7 +31,7 @@ export default function PostWithSubreddit({postId}) {
         }
         case "image": {
             content = (
-                <img src={post.image_or_link} alt=""/>
+                <img src={post.image_or_link} alt="" className="main-image"/>
             );
             break;
         }
@@ -46,10 +46,19 @@ export default function PostWithSubreddit({postId}) {
                 <h1>{post.title}</h1>
                 <p className="subreddit">Subreddit: {post.subreddit}</p>
                 {content}
-                <div>
-                    <div className="score">Score: {post.score}</div>
-                    <div className="time">{timeAgo(post.time)}</div>
-                    <div className="no-comments">Comments: {post.no_comments}</div>
+                <div className="additional">
+                    <div className="score">
+                        <img src="/imageBank/thumbsup2.png" alt="thumbs up"/>
+                        {post.score}
+                    </div>
+                    <div className="time">
+                    <img src="/imageBank/wall-clock.png" alt="thumbs up"/>
+                        {timeAgo(post.time)}
+                    </div>
+                    <div className="no-comments">
+                        <img src="/imageBank/comment3.png" alt="speech bubble"/>
+                        {post.no_comments}
+                    </div>
                 </div>
             </div>
         

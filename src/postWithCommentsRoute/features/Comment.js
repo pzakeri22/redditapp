@@ -1,4 +1,4 @@
-import {timeAgo} from '../../calculations.js';
+import {timeAgo} from '../../postsHomepage/posts/calculations.js';
 
 
 export default function Comment(props) {
@@ -7,10 +7,12 @@ export default function Comment(props) {
 
     return (
         <section className="comment">
-            <p className="username">Username:{comment.author}</p>
-            <p className="text">Comment:{comment.text}</p>
-            <p className="time">Time:{timeAgo(comment.time)}</p>
-            <div className="score">Score:{comment.score}</div>
+            <p className="username">{comment.author}</p>
+            <div className="text">{comment.text}</div>
+            <div className="time-and-score">
+                <div className="score">{comment.score}</div>
+                <p className="time">{timeAgo(comment.time)}</p>
+            </div>
         </section>
     );
 }
