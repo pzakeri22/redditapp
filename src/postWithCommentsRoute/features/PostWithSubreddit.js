@@ -1,10 +1,10 @@
 import {useSelector} from 'react-redux';
 import {timeAgo} from '../../postsHomepage/posts/calculations.js';
-import {selectPostsStates2} from '../../states/postsSlice.js';
+import {selectPostsStates} from '../../states/postsSlice.js';
 
 export default function PostWithSubreddit({postId}) {
 
-    const postsArray = useSelector(selectPostsStates2);
+    const postsArray = useSelector(selectPostsStates);
     const post = postsArray[postId]; 
 
     let content;
@@ -15,7 +15,7 @@ export default function PostWithSubreddit({postId}) {
                 className="video"
             >
                 <source src={post.video_link} type="video/mp4"/>
-                Your browser does not support the video tag.
+                Your browser does not support this video.
             </video>
             );
             break;
@@ -44,7 +44,7 @@ export default function PostWithSubreddit({postId}) {
         <section className="post-with-subreddit">
           <div className="container">
                 <h1>{post.title}</h1>
-                <p className="subreddit">Subreddit: {post.subreddit}</p>
+                <p className="subreddit">Subreddit: r/{post.subreddit}</p>
                 {content}
                 <div className="additional">
                     <div className="score">
@@ -60,10 +60,7 @@ export default function PostWithSubreddit({postId}) {
                         {post.no_comments}
                     </div>
                 </div>
-            </div>
-        
+            </div>  
         </section>
-
-        
     );
 }

@@ -1,9 +1,10 @@
 import Post from './Post.js';
-import {selectPostsStates2} from '../../states/postsSlice.js';
+import {selectPostsStates} from '../../states/postsSlice.js';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchPosts} from '../../states/api.js';
 import React, { useEffect, useRef } from 'react';
-import { selectArePostsLoading, selectPostsError, selectFilter } from '../../states/postsSlice.js';
+import { selectArePostsLoading, selectPostsError, selectFilter, selectCurrentPost } from '../../states/postsSlice.js';
+
 
 
 export default function Posts() {
@@ -11,7 +12,7 @@ export default function Posts() {
     const postsLoading = useSelector(selectArePostsLoading);
     // const postsLoading = true;
     const postsError = useSelector(selectPostsError);
-    const posts = useSelector(selectPostsStates2);
+    const posts = useSelector(selectPostsStates);
     // const postsError = true;
     const currentFilter = useSelector(selectFilter);
     // console.log(currentFilter)
@@ -24,7 +25,6 @@ export default function Posts() {
     // console.log(postsLoading);
     // console.log(postsError);
     // console.log(currentFilter);
-
 
     useEffect(() => {
         // console.log("fetchposts");
@@ -40,28 +40,21 @@ export default function Posts() {
 
     // useEffect(() => {
         for (const post in posts) {
-
             // console.log(post);
-
             if (!posts[post].over_18 
                 && !posts[post].spoiler 
                 && !posts[post].tournament 
                 && !posts[post].contest) {
                     const titleOrSubreddit = (posts[post].title+posts[post].subreddit).toLowerCase();
                     if (titleOrSubreddit.includes(currentFilter.toLowerCase()) ) {
-                        postsArray.push(<Post key={post} post={posts[post]}/>);
-                       
+                        postsArray.push(<Post myKey={post} post={posts[post]}/>);
                         // console.log(postsArray);
-
                     }
              }
         }    
         // console.log(postsArray);
-
     // })
-
     // console.log(postsArray);
-
 //[posts, currentFilter]
 
     if (postsLoading) {

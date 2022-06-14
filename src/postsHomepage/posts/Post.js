@@ -1,13 +1,16 @@
 import {timeAgo} from './calculations.js';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectArePostsLoading, selectPostsError, selectFilter, selectCurrentPost, setScrollPosition } from '../../states/postsSlice.js';
 
 export default function Post(props) {
     
-    const {key, post} = props;
+    const {myKey, post} = props;
     let navigate = useNavigate();
+    const dispatch = useDispatch();
 
     let content;
-
     switch (post.type) {
         case "hosted:video": {
             content = (
@@ -40,23 +43,23 @@ export default function Post(props) {
         }
     }
 
+    const handleClick = (e) => {
+        dispatch(setScrollPosition(window.pageYOffset));
+        if (["video", "external-link"].includes(e.target.className)) {
+            return;
+        }
+        navigate(post.link_extension);
+    };
+
     return (
      <section className="post"
-        onClick={e => {
-            if (e.target !== e.currentTarget) {
-                if (["video", "external-link"].includes(e.target.className)) {
-                    console.log(e.target.className);
-                    return;
-                }
-                navigate(post.link_extension);
-            }
-        }}
+        onClick={handleClick}
         style={{cursor: "pointer"}}
-        tabIndex="1"
+        key={myKey}
+        id={myKey}
     >
         <div className="container">
             <h1>{post.title}</h1>
-            <p className="subreddit">Subreddit: {post.subreddit}</p>
             {content}
             <div className="additional">
                 <div className="score">
@@ -75,16 +78,4 @@ export default function Post(props) {
         </div>
     </section>
     );
-
 }
-/*
-        <Link className="postcontainer"
-        to="/PostWithCommentsRoute"
-
-        <div 
-        onClick={() => window.location='http://localhost:3000/PostWithCommentsRoute'}
-        style={{cursor: "pointer"}}
-        >
-
-        this.props.history.push('/fff')
-*/

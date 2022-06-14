@@ -9,7 +9,8 @@ const postsSlice = createSlice({
         hasError: false,
         currentPostId: "",
         filter: "",
-        sort: ""
+        sort: "",
+        scrollPosition: 0
     },
     reducers: {
       currentPost: (state, action) => {
@@ -20,7 +21,10 @@ const postsSlice = createSlice({
       },
       sort: (state, action) => {   // newest; time posted, top: score, hot: most comments, default
           state.sort = action.payload;
-      } 
+      },
+      scrollPosition : (state, action) => {
+        state.scrollPosition = action.payload;
+      }, 
     },
     extraReducers: {
         [fetchPosts.pending]: (state, action) => {
@@ -40,15 +44,17 @@ const postsSlice = createSlice({
 })
 
 export const selectCurrentPost = state => state.posts.currentPostId;
-export const selectPostsStates2 = state => state.posts.posts;
+export const selectPostsStates = state => state.posts.posts;
 export const selectArePostsLoading = state => state.posts.isLoading;
 export const selectPostsError = state => state.posts.hasError;
 export const selectFilter = state => state.posts.filter;
 export const selectSort = state => state.posts.sort;
+export const selectScrollPosition = state => state.posts.scrollPosition;
 
 export const filterPosts = postsSlice.actions.filter;
 export const sortPosts = postsSlice.actions.sort;
 export const addCurrentPost = postsSlice.actions.currentPost;
+export const setScrollPosition = postsSlice.actions.scrollPosition;
 
 export default postsSlice.reducer;
 /* 

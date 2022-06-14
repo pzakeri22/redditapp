@@ -12,7 +12,7 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(38, 38, 38);
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 
 }
 
@@ -58,6 +58,26 @@ header {
 
   background-color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+header .logo-subreddit {
+  display: flex;
+  /* outline: 1px solid; */
+  gap: 2rem;
+  align-items: center;
+}
+
+header .home-subreddit {
+  color: rgb(61, 61, 61);
+  font-style: italic;
+  font-size: calc(0.75rem + 1vh);
+  /* outline: 1.5px solid rgb(61, 61, 61); */
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  margin-bottom: 0.3rem;
+  text-decoration: underline;
+  /* border-radius: 10px; */
+  
 }
 
 header .logo {
@@ -169,19 +189,21 @@ header .filter:active {
   .post-and-comments {
     width: 50rem;
   }
-}
 
-@media only screen and (min-width: 900px) {
+  .posts {
+    max-width: 97vw; 
+  }
+
   header {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .post .container .subreddit {
-    /* display: block; */
-  }
-
 }
+
+/* @media only screen and (min-width: 900px) {
+  
+} */
 
 /* r/all */
 
@@ -260,18 +282,18 @@ header .filter:active {
   /* max-width: 60rem; */
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   /* background-color: lightgreen; */
 
   /* width: 55rem; */
 
 
-  max-width: 100vw; 
+  max-width: 97vw; 
   min-width: 0;
 
 
   margin-bottom: 1.5rem;
-
+ /* border: 1px solid; */
 }
 
 .post {
@@ -296,7 +318,7 @@ header .filter:active {
   0 16px 32px rgba(0,0,0,0.07), 
   0 32px 64px rgba(0,0,0,0.07); */
 
-  min-width: 0;  
+  /* min-width: 0;   */
 
   background-color: rgb(255, 255, 255);
 
@@ -316,29 +338,23 @@ header .filter:active {
   
   /* width: 55rem;
   max-width: 100vw;  */
-  min-width: 0;
+  /* min-width: 0; */
 
 }
 
 .post .container h1 {
-  max-width: 85%;
+  max-width: 93%;
   /* align-self: start; */
   /* margin: 0.5rem; */
   font-weight: 600;
   font-size: 1.3rem;
 
 
-  min-width: 0;
+  /* min-width: 0; */
   /* text-align: center; */
 
 }
 
-.post .container .subreddit{
-  display: none;
-
-  min-width: 0;
-
-}
 
 .post .container .main-image {
   /* min-width: 300px;
@@ -348,11 +364,11 @@ header .filter:active {
   /* width: 85%; */
   background-color: black;
     /* max-width: 50rem; */
-  max-width: 90%;
+  max-width: 95%;
   /* max-height: 35rem; */
-  max-height: 60vh;
+  max-height: 70vh;
 
-  min-width: 0;
+  /* min-width: 0; */
 
 
 }
@@ -367,9 +383,10 @@ header .filter:active {
    /* max-width: 50rem; */
    max-width: 95%;
    /* max-height: 35rem; */
-   max-height: 60vh;
+   max-height: 70vh;
+   min-width: 70%;
 
-   min-width: 0;
+   /* min-width: 0; */
 
 
 }
@@ -378,14 +395,13 @@ header .filter:active {
   /* display: none; */
   /* flex-wrap: wrap; */
 
-  max-width: 90%;
+  max-width: 93%;
 
   /* overflow-wrap: break-word; */
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   min-width: 0;
 
 }
@@ -394,12 +410,12 @@ header .filter:active {
   display: flex;
   /* outline: 1px solid grey; */
   gap: 1.5rem;
-  width: 85%;
+  width: 93%;
   justify-content: space-around;
 
 
   /* specified width */
-  min-width: 0;
+  /* min-width: 0; */
 
 }
 
@@ -407,12 +423,12 @@ header .filter:active {
   display: flex;
   gap: 0.4rem;
 
-  min-width: 0;
+  /* min-width: 0; */
 
 }
 
 .post .container .score img {
-  min-width: 0;
+  /* min-width: 0; */
   filter: invert(54%) sepia(76%) saturate(6309%) hue-rotate(6deg) brightness(96%) contrast(102%);
 
   height: 1.6rem;
@@ -426,7 +442,7 @@ header .filter:active {
 }
 
 .post .container .time img {
-  min-width: 0;
+  /* min-width: 0; */
   height: 1.3rem;
   filter: invert(54%) sepia(76%) saturate(6309%) hue-rotate(6deg) brightness(96%) contrast(102%);
   margin-top: 0.2rem;
@@ -450,6 +466,7 @@ header .filter:active {
 /* click-through page with comments */
 
 .post-and-comments {
+  overflow-wrap: break-word;
 
   display: flex;
   flex-direction: column;
@@ -457,6 +474,7 @@ header .filter:active {
 
   max-width: 100vw;
   margin-bottom: 1.5rem;
+  /* border: 1px solid; */
 
 }
 
@@ -464,6 +482,7 @@ header .filter:active {
   display: flex;  
   justify-content: center;
   width: 100%;
+  /* outline: 1px solid; */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: rgb(255, 255, 255);
 
@@ -471,7 +490,8 @@ header .filter:active {
 }
 
 .post-with-subreddit .container {
-  
+  /* outline: 1px red; */
+
   height: 100%;
   width: 100%;
   /* background-color: pink; */
@@ -483,49 +503,56 @@ header .filter:active {
   width: 100%;
   height: 100%; 
   padding: 1rem 0;
+  /* border: 1px solid; */
 
 }
 
 .post-with-subreddit .container h1 {
-  max-width: 85%;
+  max-width: 93%;
   font-weight: 600;
-  min-width: 0;
+  /* min-width: 0; */
   font-size: 1.3rem;
+  /* outline: 1px solid; */
 
 }
 
 .post-with-subreddit .container .subreddit{
   /* display: none; */
   /* min-width: 0; */
+  font-style: italic;
+  font-size: 0.9rem;
+  /* outline: 1px solid; */
+  width: 93%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .post-with-subreddit .container .main-image {
   background-color: black;
-  max-width: 90%;
-  max-height: 60vh;
+  max-width: 95%;
+  max-height: 70vh;
 
 }
 
 .post-with-subreddit .container video {
   background-color: black;
-  max-width: 90%;
-  max-height: 60vh;
+  min-width: 70%;
+  max-width: 95%;
+  max-height: 70vh;
 }
 
 .post-with-subreddit .container .external-link {
-  max-width: 90%;
+  max-width: 93%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   min-width: 0;
 }
 
 .post-with-subreddit .container .additional {
   display: flex;
-  /* outline: 1px solid; */
   gap: 1.5rem;
-  width: 85%;
+  width: 93%;
   justify-content: space-around;
 }
 
@@ -533,11 +560,11 @@ header .filter:active {
   display: flex;
   gap: 0.4rem;
 
-  min-width: 0;
+  /* min-width: 0; */
 }
 
 .post-with-subreddit .container .score img {
-  min-width: 0;
+  /* min-width: 0; */
   filter: invert(54%) sepia(76%) saturate(6309%) hue-rotate(6deg) brightness(96%) contrast(102%);
 
   height: 1.6rem;
@@ -550,7 +577,7 @@ header .filter:active {
 }
 
 .post-with-subreddit .container .time img {
-  min-width: 0;
+  /* min-width: 0; */
   height: 1.3rem;
   filter: invert(54%) sepia(76%) saturate(6309%) hue-rotate(6deg) brightness(96%) contrast(102%);
   margin-top: 0.2rem;
@@ -570,22 +597,28 @@ header .filter:active {
 
 .comments, .comments-error {
   display: flex;
-  
+  /* outline: 1px solid; */
   flex-direction: column;
+  align-items: center;
   gap: 0.6rem;
   /* height: 40vh;
   min-height: 17rem; */
-  padding: 1.5rem 1rem 1rem 1rem;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: rgb(255, 255, 255);
 
+
+  /* padding: 1.5rem 1rem 1rem 1rem; */
+  padding: 1.5rem 0 1rem 0;
+
+
 }
 
 .comments h1 {
-  max-width: 85%;
+  width: 93%;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  /* outline: 1px solid; */
 
 }
 
@@ -595,32 +628,46 @@ header .filter:active {
   gap: 0.4rem;
   border-bottom: 1px solid rgb(146, 183, 237, 0.5);
   padding: 0 0 0.5rem 0;
+
+  width: 93%;
 }
 
 .comment .username {
  font-size: 0.8rem;
- /* vertical-align: top; */
  margin-bottom: 0.2rem;
+ font-style: italic;
+ margin-left: 0.1rem;
 } 
 
 .comment .text {
   padding: 0 0.4rem;
 } 
 
+.comment .text .md {
+  overflow: hidden;
+}
+
 .comment .time-and-score {
   font-size: 0.8rem;
   display: flex;
   justify-content: end;
-  gap: 1.5rem;
+  gap: 1rem;
 } 
 
 .comment .time {
-
+ 
 } 
 .comment .score {
-
+  display: flex;
+  gap: 0.2rem;
 } 
 
+.comment .score img {
+ height: 1.2rem;
+ filter: invert(33%) sepia(99%) saturate(1140%) hue-rotate(198deg) brightness(79%) contrast(96%);
+
+
+} 
 
 .comments-error img {
   height: 13vh;

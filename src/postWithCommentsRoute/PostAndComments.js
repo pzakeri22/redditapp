@@ -1,10 +1,8 @@
 import PostWithSubreddit from "./features/PostWithSubreddit.js";
 import Comments from "./features/Comments.js";
-import { useParams } from "react-router-dom";
-import {useSelector, useDispatch} from 'react-redux';
-import { useEffect } from 'react';
-import {addCurrentPost, selectCurrentPost } from '../states/postsSlice.js';
-import {fetchComments} from '../states/api.js'
+// import {useSelector, useDispatch} from 'react-redux';
+// import { useEffect } from 'react';
+// import {addCurrentPost, selectCurrentPost } from '../states/postsSlice.js';
 
 
 export default function PostAndComments() {
@@ -13,14 +11,14 @@ export default function PostAndComments() {
     //     "124": {}
     // }
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const url = window.location.href;
     const urlExtension = `/r/${url.split('/r/')[1]}`;
     const postId = url.split('/')[6];
 
-    useEffect(() => {
-        dispatch(addCurrentPost(postId));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(addCurrentPost(postId));
+    // }, []);
 
     return (
         <main className="post-and-comments">

@@ -19,7 +19,7 @@ export default function Comments({urlExtension}) {
 
     let commentsArray = [];
     for (const comment in comments) {
-        if ( comments[comment].text && !(comments[comment].text).includes("[deleted]") && !(comments[comment].text).includes("[removed]") && !(comments[comment].author).includes("Mod")) {
+        if ( comments[comment].text && !(comments[comment].text).includes("[deleted]") && !(comments[comment].text).includes("[removed]") ) {
             commentsArray.push(<Comment key={comment} comment={comments[comment]} />);
         }
     }
@@ -32,8 +32,6 @@ export default function Comments({urlExtension}) {
             </section>
         )
     }
-
-    
     if (commentsError) {
         return (
             <section className="comments-error">
@@ -43,7 +41,6 @@ export default function Comments({urlExtension}) {
             </section>
         )
     } 
-    
     return (
         <section className="comments">
             <h1>Comments</h1>
