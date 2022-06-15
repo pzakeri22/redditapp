@@ -69,13 +69,13 @@ header .logo-subreddit {
 
 header .home-subreddit {
   color: rgb(61, 61, 61);
-  font-style: italic;
-  font-size: calc(0.75rem + 1vh);
+  font-size: calc(0.8rem + 0.6vh);
   /* outline: 1.5px solid rgb(61, 61, 61); */
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.15rem 0.6rem;
   margin-bottom: 0.3rem;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  border-bottom: 1.5px solid;
   /* border-radius: 10px; */
   
 }
@@ -83,7 +83,7 @@ header .home-subreddit {
 header .logo {
   height: 6vh;
   min-height: 30px;
-  max-height: 3rem;
+  max-height: 2.7rem;
   vertical-align: middle;
   margin-bottom: 0.25rem;
 }
@@ -103,46 +103,28 @@ header .filter-sort {
   gap: 1rem;
   width: 100%;
   max-width: 30rem;
-
-
 }
 
-header .filter-sort button {
+header .filter-sort select {
   background-color: #FFFFFF;
   border: 2px solid rgb(146, 183, 237);
-
   color: #111827;
-  /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
-  /* font-size: .875rem; */
   font-weight: 600;
-  font-size: 1.05rem;
-  /* padding: .75rem 1rem; */
+  font-size: calc(0.8rem + 0.5vh);
   text-align: center;
-  text-decoration: none #D1D5DB solid;
-  /* text-decoration-thickness: auto; */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); */
   cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-
   width: 6rem;
+
 }
 
-header .filter-sort button:hover {
+header .filter-sort select:hover {
   border: 3px solid rgb(146, 183, 237);
 }
 
-header .filter-sort button:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+header .filter-sort select:focus {
+  outline: none;
 }
-
-header .filter-sort button:focus-visible {
-  box-shadow: none;
-}
-
-
 
 header .filter {
  height: 100%;
@@ -160,11 +142,11 @@ header .filter:hover, header .filter:active, header .filter:focus {
   border: 3px solid rgb(236, 88, 0, 0.6);
   outline: none;
 }
+
 /* 
 header .filter:active {
   border: 3px solid rgb(236, 88, 0, 0.6);
 } */
-
 
 .results-container {  
   grid-area: results-container;
@@ -391,6 +373,14 @@ header .filter:active {
 
 }
 
+.post .container .link-symbol {
+  height: .9rem;
+  margin-right: .4rem;
+  vertical-align: middle;
+  margin-bottom: .2rem;
+
+}
+
 .post .container .external-link {
   /* display: none; */
   /* flex-wrap: wrap; */
@@ -539,6 +529,13 @@ header .filter:active {
   min-width: 70%;
   max-width: 95%;
   max-height: 70vh;
+}
+
+.post-with-subreddit .container .link-symbol {
+  height: .9rem;
+  margin-right: .4rem;
+  vertical-align: middle;
+  margin-bottom: .2rem;
 }
 
 .post-with-subreddit .container .external-link {

@@ -16,10 +16,9 @@ export default function App() {
   let posts = useSelector(selectPostsStates);
   let postRoutes = [];
 
-
   useEffect(() => {
+    // postRoutes = [];
     for (const post in posts) {
-      if (!posts[post].over_18 && !posts[post].spoiler && !posts[post].tournament && !posts[post].contest) {
         postRoutes.push(
           <Route 
             path={`/${posts[post].link_extension}`} 
@@ -31,7 +30,6 @@ export default function App() {
               } 
           />
         );
-      }
    }
   }, [posts]);
 

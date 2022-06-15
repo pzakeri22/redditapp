@@ -1,14 +1,15 @@
-import {filterPosts, selectFilter} from '../../states/postsSlice.js';
+import {filterPosts, selectFilter, sortPosts, selectSort} from '../../states/postsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom'
 import React from 'react';
 
 
 export default function FilterSort() {
-
     const dispatch = useDispatch();
     const currentFilter = useSelector(selectFilter);
     const navigate = useNavigate();
+    // const currentSort = useSelector(selectSort);
+    // console.log(currentSort);
     // const location = useLocation();    
 
     const handleFilterChange = e => {
@@ -18,11 +19,18 @@ export default function FilterSort() {
         dispatch(filterPosts(e.target.value));
     }
 
+    const handleClick = (e) => {
+        const sortValue = e.target.value;
+        dispatch(sortPosts(sortValue));
+    }
+
     return (
         <div className="filter-sort">
-            <button type="button" className="button-9">
-                Best
-            </button>
+            <select name="Sort" onClick={handleClick} >
+                <option value="Hot">Hot</option>
+                <option value="New">New</option>
+                <option value="Likes">Likes</option>
+            </select>
             <input type="text" 
                 onChange={handleFilterChange} 
                 value={currentFilter} 

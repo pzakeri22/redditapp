@@ -26,8 +26,8 @@ export default function Post(props) {
         case "link": {
             content = (
             <a href={post.image_or_link}
-                className="external-link" style={{fontStyle: "italic"}}>
-                    {post.image_or_link}
+                className="external-link" style={{fontStyle: "italic"}} target="_blank" rel="noopener noreferrer">
+                    <img src="/imageBank/resize.png" alt="link" className="link-symbol"/>{post.image_or_link}
             </a>
             );
             break;
