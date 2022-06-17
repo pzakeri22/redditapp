@@ -1,6 +1,6 @@
 import {Link, Navigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import { setScrollPosition } from '../../states/postsSlice.js';
+import { setScrollPosition, filterPosts, sortPosts } from '../../states/postsSlice.js';
 import {useLocation } from "react-router-dom";
 
 export default function LogoBar() {
@@ -9,10 +9,12 @@ export default function LogoBar() {
     const location = useLocation();
 
     const handleClick = () => {
-        dispatch(setScrollPosition(0));
+        dispatch(sortPosts("Hot"));
+        dispatch(filterPosts(""));
         if (location.pathname === "/") { 
             window.location.reload();
         }
+        dispatch(setScrollPosition(0));
     };
     
     return (

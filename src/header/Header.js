@@ -54,7 +54,7 @@ export default function Header() {
           const header = document.querySelector('header');
           const headerHeight = header.clientHeight;
           const resultsContainer =  document.getElementsByClassName('results-container')[0];
-          resultsContainer.style.top = `${headerHeight - 5}px`;
+          resultsContainer.style.top = `${headerHeight - 8}px`;
         }
         window.addEventListener('resize', updateSize);
         updateSize();

@@ -11,7 +11,8 @@ const postsSlice = createSlice({
         scrollPosition: 0,
         sort: "Hot",
         filter: "",
-        modifiedPosts: []
+        modifiedPosts: [],
+        filteredPosts: []
     },
     reducers: {
       currentPost: (state, action) => {
@@ -28,7 +29,10 @@ const postsSlice = createSlice({
       },
       modifiedPosts : (state, action) => {
           state.modifiedPosts = action.payload;
-      }
+      },
+      filteredPosts : (state, action) => {
+        state.filteredPosts = action.payload;
+    }
     },
     extraReducers: {
         [fetchPosts.pending]: (state, action) => {
@@ -55,12 +59,14 @@ export const selectFilter = state => state.posts.filter;
 export const selectSort = state => state.posts.sort;
 export const selectScrollPosition = state => state.posts.scrollPosition;
 export const selectModifiedPosts = state => state.posts.modifiedPosts;
+export const selectFilteredPosts = state => state.posts.filteredPosts;
 
 export const filterPosts = postsSlice.actions.filter;
 export const sortPosts = postsSlice.actions.sort;
 export const addCurrentPost = postsSlice.actions.currentPost;
 export const setScrollPosition = postsSlice.actions.scrollPosition;
 export const setModifiedPosts = postsSlice.actions.modifiedPosts;
+export const setFilteredPosts = postsSlice.actions.filteredPosts;
 
 export default postsSlice.reducer;
 /* 
