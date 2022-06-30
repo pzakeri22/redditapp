@@ -1,8 +1,7 @@
 import {timeAgo} from './calculations.js';
 import {useNavigate, } from "react-router-dom";
-import React, {useState, useEffect} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectArePostsLoading, selectPostsError, selectFilter, selectCurrentPost, setScrollPosition } from '../../states/postsSlice.js';
+import {useDispatch } from 'react-redux';
+import {setScrollPosition } from '../../states/postsSlice.js';
 
 export default function Post(props) {
     
@@ -14,9 +13,7 @@ export default function Post(props) {
     switch (post.type) {
         case "hosted:video": {
             content = (
-            <video controls
-                className="video"
-            >
+            <video controls className="video">
                 <source src={post.video_link} type="video/mp4"/>
                 Your browser does not support the video tag.
             </video>
@@ -44,6 +41,8 @@ export default function Post(props) {
     }
 
     const handleClick = (e) => {
+        console.log("scrollSet");
+        console.log(window.pageYOffset);
         dispatch(setScrollPosition(window.pageYOffset));
         if (["video", "external-link"].includes(e.target.className)) {
             return;

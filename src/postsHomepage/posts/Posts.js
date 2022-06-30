@@ -1,20 +1,19 @@
 import Post from './Post.js';
-import postsSlice, {selectPostsStates, sortPosts} from '../../states/postsSlice.js';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchPosts} from '../../states/api.js';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import { selectArePostsLoading, 
     selectPostsError, 
     selectFilter, 
     selectSort, 
     setModifiedPosts, 
     selectModifiedPosts, 
-    setFilteredPosts, 
-    selectFilteredPosts,
-    setScrollPosition,
+    setRenderCount,
+    selectPostsStates, 
+    selecthomeRedirection, 
 } from '../../states/postsSlice.js';
 
-export default function Posts() {
+export default function Posts({scroll}) {
     const dispatch = useDispatch();
     const posts = useSelector(selectPostsStates);
     const postsLoading = useSelector(selectArePostsLoading);
@@ -22,6 +21,7 @@ export default function Posts() {
     const currentFilter = useSelector(selectFilter);
     const currentSort = useSelector(selectSort);
     const modifiedPosts = useSelector(selectModifiedPosts);
+    const homeRedirection = useSelector(selecthomeRedirection);
 
     useEffect(() => {
         dispatch(fetchPosts());
@@ -34,24 +34,8 @@ export default function Posts() {
         postList = removeUnwanted(postList);
         postList = addHotRating(postList);
         postList = redoSorting(postList)
-
         dispatch(setModifiedPosts(postList));
-        
     }, [posts])
-
-    const redoSorting = (postList) => {
-        let sortVariable;
-        if (currentSort === "New") {
-            sortVariable = "time";
-        }
-        if (currentSort === "Likes") {
-            sortVariable = "score";
-        }
-        const sortedPostList = postList.slice().sort((a, b) => {
-            return b[sortVariable] - a[sortVariable];
-        });
-        return sortedPostList;
-    }
 
     const removeUnwanted = (postList) => {
         postList = postList.filter(post => {
@@ -70,8 +54,25 @@ export default function Posts() {
         return postList;
     }
 
+    const redoSorting = (postList) => {
+        let sortVariable;
+        // if (currentSort === "New") {
+        //     return;
+        // }
+        if (currentSort === "New") {
+            sortVariable = "time";
+        }
+        if (currentSort === "Likes") {
+            sortVariable = "score";
+        }
+        const sortedPostList = postList.slice().sort((a, b) => {
+            return b[sortVariable] - a[sortVariable];
+        });
+        return sortedPostList;
+    }
+
     useEffect(() => {
-        window.scrollTo(0,0);
+        // window.scrollTo(0,0);
         let sortVariable;
         if (currentSort === "Hot") {
             sortVariable = "hotRating";
@@ -98,11 +99,12 @@ export default function Posts() {
         postList.slice().forEach(post => {
             finalPostList.push(<Post myKey={post.id} post={post}/>);
         })
+        // window.scrollTo(0, 700);
         return finalPostList;
     }
 
     const filter = (postList) => {
-        window.scrollTo(0,0);
+        // window.scrollTo(0,0);
         const filteredPostList = postList.filter(post => {
             const titleOrSubreddit = (post.title+post.subreddit).toLowerCase();
             if ( titleOrSubreddit.includes(currentFilter.toLowerCase()) ) {
@@ -113,6 +115,10 @@ export default function Posts() {
         });
         return filteredPostList;
     }
+    
+    // useEffect(() => {
+    //     dispatch(setRenderCount());
+    // })
     
     if (postsLoading) {
         return (

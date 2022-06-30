@@ -1,56 +1,38 @@
-import {filterPosts, selectFilter, sortPosts, selectSort, setScrollPosition} from '../../states/postsSlice.js';
+import {setFilter, selectFilter, setSort, selectSort, selectPreviousSort} from '../../states/postsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import React from 'react';
 import { useEffect } from 'react';
 
-
-
 export default function FilterSort() {
     const dispatch = useDispatch();
-    const currentFilter = useSelector(selectFilter);
     const navigate = useNavigate();
+    const currentFilter = useSelector(selectFilter);
     const currentSort = useSelector(selectSort);
+    const previousSort = useSelector(selectPreviousSort);
 
-    /*
-    when click on post, remember new etc order and show this in the top.
-    When go back to posts, have it sorted on that order.
-
-        when go backwards by pressing back button, 
-        remember currentSort state
-        display posts in sorted order.
-
-        when press home button, re-set to default
-
-        set state on any page, home or posts
-
-        if sort changes OR if current sort !== hot.
-
-        if 
-    */
-    const handleFilterChange = e => {
-        navigate("/");
+    const handleFilter = e => {
+        navigate("/r/all");
         console.log(e.target.value)
-        dispatch(filterPosts(e.target.value));
+        dispatch(setFilter(e.target.value));
     }
 
-    const handleClick = (e) => {
-        if (e.target.value !== currentSort) {
-            navigate("/");
-            dispatch(setScrollPosition(0));
-        }
+    const handleSort = (e) => {
         const sortValue = e.target.value;
-        dispatch(sortPosts(sortValue));
+        if (sortValue !== currentSort) {
+            navigate("/r/all");
+            console.log(e.target.value)
+            dispatch(setSort(sortValue));
+        }
     }
 
     useEffect(() => {
         let sort = document.getElementById("select-sort");
-        if (currentSort === "Hot") {
+        if (currentSort === "Hot" || currentSort === "Default") {
             sort.selectedIndex = 0;
         }
         if (currentSort === "New") {
             sort.selectedIndex = 1;
-
         }
         if (currentSort === "Likes") {
             sort.selectedIndex = 2;
@@ -59,13 +41,13 @@ export default function FilterSort() {
 
     return (
         <div className="filter-sort">
-            <select name="Sort" onClick={handleClick} id="select-sort">
+            <select name="Sort" onClick={handleSort} id="select-sort">
                 <option value="Hot" selected="selected">Hot</option>
                 <option value="New">New</option>
                 <option value="Likes">Likes</option>
             </select>
             <input type="text" 
-                onChange={handleFilterChange} 
+                onChange={handleFilter} 
                 value={currentFilter} 
                 placeholder="Search posts..."
                 className="filter"

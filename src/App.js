@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './index.css';
 import {useSelector} from 'react-redux';
 import {selectPostsStates} from './states/postsSlice.js';
@@ -9,17 +9,18 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate, 
 } from "react-router-dom";
 
 export default function App() {
 
   let posts = useSelector(selectPostsStates);
-  let postRoutes = [];
+  const [postRoutes, setPostRoutes] = useState([]);
 
   useEffect(() => {
-    // postRoutes = [];
-    for (const post in posts) {
-        postRoutes.push(
+      for (const post in posts) {  
+        setPostRoutes((prev) => ([
+          ...prev,
           <Route 
             path={`/${posts[post].link_extension}`} 
             element={
@@ -27,19 +28,19 @@ export default function App() {
                 key={post} 
                 post={posts[post]}
               />
-              } 
+            } 
           />
-        );
-   }
+        ]))
+      } 
+    return () => {setPostRoutes([])}
   }, [posts]);
 
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Home />} />            
-          {/* <Route path="/PostWithCommentsRoute" element={<PostWithCommentsRoute/>} /> */}
-          {/* <Route path="/PostWithCommentsRoute/:post" element={<PostWithCommentsRoute/>} /> */}
-          {postRoutes}
+          <Route path="/" element={<Navigate to="/r/all" />} />            
+          <Route path="/r/all" element={<Home />} />            
+            {postRoutes}
           <Route path="*" 
             element={
               <main style={{ padding: "1rem" }}>
@@ -49,5 +50,5 @@ export default function App() {
           />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
