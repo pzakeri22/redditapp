@@ -39,6 +39,7 @@ export default function Post(props) {
             content = "";
         }
     }
+    
 
     const handleClick = (e) => {
         console.log("scrollSet");
@@ -59,6 +60,7 @@ export default function Post(props) {
     >
         <div className="container">
             <h1>{post.title}</h1>
+            <p className="subreddit">Subreddit: r/{post.subreddit}</p>
             {content}
             <div className="additional">
                 <div className="score">

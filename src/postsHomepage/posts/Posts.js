@@ -9,19 +9,19 @@ import { selectArePostsLoading,
     setModifiedPosts, 
     selectModifiedPosts, 
     setRenderCount,
-    selectPostsStates, 
-    selecthomeRedirection, 
+    selectPosts, 
+    selectHomeRedirection, 
 } from '../../states/postsSlice.js';
 
 export default function Posts({scroll}) {
     const dispatch = useDispatch();
-    const posts = useSelector(selectPostsStates);
+    const posts = useSelector(selectPosts);
     const postsLoading = useSelector(selectArePostsLoading);
     const postsError = useSelector(selectPostsError);
     const currentFilter = useSelector(selectFilter);
     const currentSort = useSelector(selectSort);
     const modifiedPosts = useSelector(selectModifiedPosts);
-    const homeRedirection = useSelector(selecthomeRedirection);
+    const homeRedirection = useSelector(selectHomeRedirection);
 
     useEffect(() => {
         dispatch(fetchPosts());
@@ -56,9 +56,6 @@ export default function Posts({scroll}) {
 
     const redoSorting = (postList) => {
         let sortVariable;
-        // if (currentSort === "New") {
-        //     return;
-        // }
         if (currentSort === "New") {
             sortVariable = "time";
         }
@@ -72,7 +69,6 @@ export default function Posts({scroll}) {
     }
 
     useEffect(() => {
-        // window.scrollTo(0,0);
         let sortVariable;
         if (currentSort === "Hot") {
             sortVariable = "hotRating";
@@ -99,12 +95,10 @@ export default function Posts({scroll}) {
         postList.slice().forEach(post => {
             finalPostList.push(<Post myKey={post.id} post={post}/>);
         })
-        // window.scrollTo(0, 700);
         return finalPostList;
     }
 
     const filter = (postList) => {
-        // window.scrollTo(0,0);
         const filteredPostList = postList.filter(post => {
             const titleOrSubreddit = (post.title+post.subreddit).toLowerCase();
             if ( titleOrSubreddit.includes(currentFilter.toLowerCase()) ) {
@@ -115,10 +109,6 @@ export default function Posts({scroll}) {
         });
         return filteredPostList;
     }
-    
-    // useEffect(() => {
-    //     dispatch(setRenderCount());
-    // })
     
     if (postsLoading) {
         return (
@@ -201,13 +191,6 @@ export default function Posts({scroll}) {
             }, [posts, currentFilter, currentSort])
         */
 
-            
-    // {
-    //     "123": {title : xxx},
-    //     "124": {}
-    // }
-    //hot(default - by ), new (by created), top ( by likes)
-
 /*
 posts;object of key value pairs where value is the post object
 setPostsArray as empty
@@ -234,53 +217,3 @@ setPostsArray by hotness;
 
 
 */
-
-        /*
-        if (currentSort === "Hot") {
-            console.log("Hot")
-            // postList = sortHot(postList);
-            // for (const post of postList) {
-            //     console.log(post.hotRating)
-            // }
-            postList.sort(function (a, b) {
-                return b.hotRating - a.hotRating;
-            })
-        }
-        if (currentSort === "New") {
-            console.log("new")
-            // postList = sortNew(postList);
-            postList.sort(function (a, b) {
-                return b.time - a.time;
-            })
-            // for (const post of postList) {
-            //     console.log(post.time)
-            // }
-        }
-        if (currentSort === "Likes") {
-            console.log("likes")
-            postList = sortLikes(postList);
-            // for (const post of postList) {
-            //     console.log(post.score)
-            // }
-        }
-        for (const post of postList) {
-            setPostsArray(prev => (
-                [...prev, <Post myKey={post.id} post={post}/>]
-            ));
-        }
-        */
-
-    //  useEffect(() => {
-    //     let postList = modifiedPosts;
-    //     const filteredPostList = postList.filter(post => {
-    //         const titleOrSubreddit = (post.title+post.subreddit).toLowerCase();
-    //         if ( titleOrSubreddit.includes(currentFilter.toLowerCase()) ) {
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-    //     });
-    //     console.log(filteredPostList);
-    //     dispatch(setFilteredPosts(filteredPostList));
-    //     console.log(filteredPosts);
-    // }, [currentFilter])

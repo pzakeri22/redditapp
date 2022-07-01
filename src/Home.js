@@ -6,7 +6,7 @@ import {useSelector, useDispatch} from "react-redux";
 import React, { useEffect } from 'react';
 import { 
   selectScrollPosition, 
-  selecthomeRedirection, 
+  selectHomeRedirection, 
   setScrollPosition, 
   setFilter, 
   setSort, 
@@ -14,7 +14,6 @@ import {
   selectFilter, 
   selectSort, 
   selectPreviousSort, 
-  selectRenderCount, 
   setPreviousSort, 
   setPreviousFilter, 
   selectPreviousFilter
@@ -23,13 +22,12 @@ import {
 export default function Home() {
 
   const scrollPosition = useSelector(selectScrollPosition);
-  const homeRedirection = useSelector(selecthomeRedirection);
+  const homeRedirection = useSelector(selectHomeRedirection);
   const currentFilter = useSelector(selectFilter);
   const currentSort = useSelector(selectSort);
   const previousSort = useSelector(selectPreviousSort);
   const previousFilter = useSelector(selectPreviousFilter);
   const dispatch = useDispatch();
-  // const renderCount = useSelector(selectRenderCount);
 
   useEffect(() => {
     if (homeRedirection) {

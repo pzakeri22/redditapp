@@ -15,8 +15,7 @@ const postsSlice = createSlice({
         previousFilter: "",
         modifiedPosts: [],
         filteredPosts: [],
-        homeRedirection: false,
-        renderCount: 0
+        homeRedirection: false
     },
     reducers: {
       currentPost: (state, action) => {
@@ -47,9 +46,6 @@ const postsSlice = createSlice({
       },
       homeRedirection : (state, action) => {
         state.homeRedirection = action.payload;
-      },
-      renderCount : (state, action) => {
-        state.renderCount = state.renderCount + 1;
       }
     },
     extraReducers: {
@@ -68,23 +64,18 @@ const postsSlice = createSlice({
         }
     }
 })
-
-export const selectCurrentPost = state => state.posts.currentPostId;
-export const selectPostsStates = state => state.posts.posts;
 export const selectArePostsLoading = state => state.posts.isLoading;
 export const selectPostsError = state => state.posts.hasError;
+export const selectPosts = state => state.posts.posts;
 export const selectFilter = state => state.posts.filter;
 export const selectPreviousFilter = state => state.posts.previousFilter;
 export const selectSort = state => state.posts.sort;
 export const selectPreviousSort = state => state.posts.previousSort;
-
-export const selectRenderCount = state => state.posts.renderCount;
-
-
+export const selectCurrentPost = state => state.posts.currentPostId;
 export const selectScrollPosition = state => state.posts.scrollPosition;
 export const selectModifiedPosts = state => state.posts.modifiedPosts;
 export const selectFilteredPosts = state => state.posts.filteredPosts;
-export const selecthomeRedirection = state => state.posts.homeRedirection;
+export const selectHomeRedirection = state => state.posts.homeRedirection;
 
 export const setFilter = postsSlice.actions.filter;
 export const setPreviousFilter = postsSlice.actions.previousFilter;
@@ -95,7 +86,6 @@ export const setScrollPosition = postsSlice.actions.scrollPosition;
 export const setModifiedPosts = postsSlice.actions.modifiedPosts;
 export const setFilteredPosts = postsSlice.actions.filteredPosts;
 export const setHomeRedirection = postsSlice.actions.homeRedirection;
-export const setRenderCount = postsSlice.actions.renderCount;
 
 
 export default postsSlice.reducer;

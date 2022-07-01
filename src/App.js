@@ -2,7 +2,7 @@ import './App.css';
 import React, {useEffect, useState} from "react";
 import './index.css';
 import {useSelector} from 'react-redux';
-import {selectPostsStates} from './states/postsSlice.js';
+import {selectPosts} from './states/postsSlice.js';
 import PostWithCommentsRoute from './postWithCommentsRoute/Container.js'
 import Home from './Home.js';
 import {
@@ -14,7 +14,7 @@ import {
 
 export default function App() {
 
-  let posts = useSelector(selectPostsStates);
+  let posts = useSelector(selectPosts);
   const [postRoutes, setPostRoutes] = useState([]);
 
   useEffect(() => {

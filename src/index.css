@@ -269,6 +269,14 @@ header .filter:hover, header .filter:active, header .filter:focus {
   font-size: 1.3rem;
 }
 
+.post .container .subreddit{
+  font-style: italic;
+  font-size: 0.9rem;
+  width: 93%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .post .container .main-image {
   background-color: black;
   max-width: 95%;

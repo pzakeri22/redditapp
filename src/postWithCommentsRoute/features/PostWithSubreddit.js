@@ -1,10 +1,10 @@
 import {useSelector} from 'react-redux';
 import {timeAgo} from '../../postsHomepage/posts/calculations.js';
-import {selectPostsStates} from '../../states/postsSlice.js';
+import {selectPosts} from '../../states/postsSlice.js';
 
 export default function PostWithSubreddit({postId}) {
 
-    const postsArray = useSelector(selectPostsStates);
+    const postsArray = useSelector(selectPosts);
     const post = postsArray[postId]; 
 
     let content;
