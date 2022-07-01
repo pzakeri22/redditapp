@@ -1,5 +1,5 @@
-import {Link, useNavigate} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
+import { useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import { setHomeRedirection } from '../../states/postsSlice.js';
 import {useLocation } from "react-router-dom";
 

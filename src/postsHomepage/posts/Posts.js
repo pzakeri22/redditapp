@@ -1,16 +1,14 @@
 import Post from './Post.js';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchPosts} from '../../states/api.js';
-import React, { useEffect, useState, useRef} from 'react';
+import React, { useEffect} from 'react';
 import { selectArePostsLoading, 
     selectPostsError, 
     selectFilter, 
     selectSort, 
     setModifiedPosts, 
     selectModifiedPosts, 
-    setRenderCount,
     selectPosts, 
-    selectHomeRedirection, 
 } from '../../states/postsSlice.js';
 
 export default function Posts({scroll}) {
@@ -21,7 +19,6 @@ export default function Posts({scroll}) {
     const currentFilter = useSelector(selectFilter);
     const currentSort = useSelector(selectSort);
     const modifiedPosts = useSelector(selectModifiedPosts);
-    const homeRedirection = useSelector(selectHomeRedirection);
 
     useEffect(() => {
         dispatch(fetchPosts());
@@ -214,6 +211,4 @@ setPostsArray by hotness;
 
 
 [posts, currentFilter, currentSort]
-
-
 */

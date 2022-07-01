@@ -1,17 +1,8 @@
 import PostWithSubreddit from "./features/PostWithSubreddit.js";
 import Comments from "./features/Comments.js";
-// import {useSelector, useDispatch} from 'react-redux';
-// import { useEffect } from 'react';
-// import {addCurrentPost, selectCurrentPost } from '../states/postsSlice.js';
-
 
 export default function PostAndComments() {
-    // {
-    //     "123": {title : xxx},
-    //     "124": {}
-    // }
 
-    // const dispatch = useDispatch();
     const url = window.location.href;
     const urlExtension = `/r/${url.split('/r/')[1]}`;
     const postId = url.split('/')[6];

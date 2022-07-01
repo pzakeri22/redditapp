@@ -9,9 +9,7 @@ export default function Comments({urlExtension}) {
     const dispatch = useDispatch();
     const comments = useSelector(selectComments);
     const commentsLoading = useSelector(selectAreCommentsLoading);
-    // const commentsLoading = true;
     const commentsError = useSelector(selectCommentsError);
-    // const commentsError = true;
 
     useEffect(() => {
         dispatch(fetchComments(urlExtension));

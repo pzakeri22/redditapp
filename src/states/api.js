@@ -38,7 +38,7 @@ export const fetchComments = createAsyncThunk( //post = /r/aww/comments/uyp0n2/a
     async (post) => { 
         const jsonResponse = await fetch(`https://www.reddit.com${post}.json`);
         const response = await jsonResponse.json();
-        const comments = response[1].data.children //w/ot replies
+        const comments = response[1].data.children 
         let commentsData = {};  //array of objects containing data for each of comments which arent replies
         for (const comment of comments) {
             const info = comment.data;
@@ -60,8 +60,5 @@ export const fetchComments = createAsyncThunk( //post = /r/aww/comments/uyp0n2/a
 /*
 "selftext_html": null
  "thumbnail": "https://b.thumbs.redditmedia.com/55bJiOJP6u7rtuY5dpLxHem6YQAi55w1K5u3xCEt-Yk.jpg",
-subreddit - info only found on subreddit itself
-message - info only on messages themselves. (same as comments?)
-comments are not on main object. 
 */
 

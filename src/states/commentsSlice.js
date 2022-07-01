@@ -1,18 +1,5 @@
 import {fetchComments} from './api.js';
 import {createSlice} from '@reduxjs/toolkit';
-/* 
-export action creators - export const { addTodo, toggleTodo } = todosSlice.actions
-
-// name: 'todos',
-// reducer: (state, action) => newState,
-// actions: {
-//   addTodo: (payload) => ({type: 'todos/addTodo', payload}),
-//   toggleTodo: (payload) => ({type: 'todos/toggleTodo', payload})
-// },
-
-//Case reducers should have a name that corresponds to an action type the slice can handle, e.g.;
-// dispatch(loadData()); - useeffect
-*/
 
 const commentsSlice = createSlice({
     name: "comments",

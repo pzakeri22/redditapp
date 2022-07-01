@@ -1,4 +1,4 @@
-import {setFilter, selectFilter, setSort, selectSort, selectPreviousSort} from '../../states/postsSlice.js';
+import {setFilter, selectFilter, setSort, selectSort} from '../../states/postsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import React from 'react';
@@ -9,7 +9,6 @@ export default function FilterSort() {
     const navigate = useNavigate();
     const currentFilter = useSelector(selectFilter);
     const currentSort = useSelector(selectSort);
-    const previousSort = useSelector(selectPreviousSort);
 
     const handleFilter = e => {
         navigate("/r/all");
