@@ -11,6 +11,9 @@ import {
   Route,
   Navigate, 
 } from "react-router-dom";
+// import {Provider} from 'react-redux';
+// import store from '../src/states/store.js'
+
 
 export default function App() {
 
@@ -36,6 +39,7 @@ export default function App() {
   }, [posts]);
 
   return (
+    // <Provider store={store}>
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Navigate to="/r/all" />} />            
@@ -50,5 +54,6 @@ export default function App() {
           />
       </Routes>
     </BrowserRouter>
+    // </Provider>
   )
 }
