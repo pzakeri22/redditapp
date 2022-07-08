@@ -52,7 +52,7 @@ export default function PostWithSubreddit({postId}) {
                         {post.score}
                     </div>
                     <div className="time">
-                    <img src="/imageBank/wall-clock.png" alt="thumbs up"/>
+                    <img src="/imageBank/wall-clock.png" alt="time posted"/>
                         {timeAgo(post.time)}
                     </div>
                     <div className="no-comments">

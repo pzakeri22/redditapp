@@ -11,9 +11,6 @@ import {
   Route,
   Navigate, 
 } from "react-router-dom";
-// import {Provider} from 'react-redux';
-// import store from '../src/states/store.js'
-
 
 export default function App() {
 
@@ -27,23 +24,23 @@ export default function App() {
           <Route 
             path={`/${posts[post].link_extension}`} 
             element={
-              <PostWithCommentsRoute 
-                key={post} 
+              <PostWithCommentsRoute
                 post={posts[post]}
               />
-            } 
+            }
+            key={posts[post].id} 
+
           />
         ]))
       } 
     return () => {setPostRoutes([])}
   }, [posts]);
-
+  
   return (
-    // <Provider store={store}>
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Navigate to="/r/all" />} />            
-          <Route path="/r/all" element={<Home />} />            
+          <Route path="/" element={<Navigate to="/r/all" />} key="homeoriginal"/>            
+          <Route path="/r/all" element={<Home />} key="homeredirect"/>            
             {postRoutes}
           <Route path="*" 
             element={
@@ -51,9 +48,9 @@ export default function App() {
                 <p>There's nothing here! Please go back and try again.</p>
               </main>
             } 
+            key="error"
           />
       </Routes>
     </BrowserRouter>
-    // </Provider>
   )
 }

@@ -11,7 +11,7 @@ import { selectArePostsLoading,
     selectPosts, 
 } from '../../states/postsSlice.js';
 
-export default function Posts({scroll}) {
+export default function Posts() {
     const dispatch = useDispatch();
     const posts = useSelector(selectPosts);
     const postsLoading = useSelector(selectArePostsLoading);
@@ -22,7 +22,7 @@ export default function Posts({scroll}) {
 
     useEffect(() => {
         dispatch(fetchPosts());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         let postList = [];
@@ -32,7 +32,7 @@ export default function Posts({scroll}) {
         postList = addHotRating(postList);
         postList = redoSorting(postList)
         dispatch(setModifiedPosts(postList));
-    }, [posts])
+    }, [posts, dispatch])
 
     const removeUnwanted = (postList) => {
         postList = postList.filter(post => {
@@ -53,10 +53,10 @@ export default function Posts({scroll}) {
 
     const redoSorting = (postList) => {
         let sortVariable;
-        if (currentSort === "New") {
+        if (currentSort === "new") {
             sortVariable = "time";
         }
-        if (currentSort === "Likes") {
+        if (currentSort === "likes") {
             sortVariable = "score";
         }
         const sortedPostList = postList.slice().sort((a, b) => {
@@ -67,13 +67,13 @@ export default function Posts({scroll}) {
 
     useEffect(() => {
         let sortVariable;
-        if (currentSort === "Hot") {
+        if (currentSort === "hot") {
             sortVariable = "hotRating";
         }
-        if (currentSort === "New") {
+        if (currentSort === "new") {
             sortVariable = "time";
         }
-        if (currentSort === "Likes") {
+        if (currentSort === "likes") {
             sortVariable = "score";
         }
         let postList = modifiedPosts;
@@ -81,7 +81,7 @@ export default function Posts({scroll}) {
             return b[sortVariable] - a[sortVariable];
         });
         dispatch(setModifiedPosts(sortedPostList));
-    }, [currentSort]) 
+    }, [currentSort, dispatch]) 
 
     const finalPostsArray = () => {
         let postList = modifiedPosts;
@@ -90,7 +90,7 @@ export default function Posts({scroll}) {
         }
         let finalPostList = [];
         postList.slice().forEach(post => {
-            finalPostList.push(<Post myKey={post.id} post={post}/>);
+            finalPostList.push(<Post key={post.id} post={post}/>);
         })
         return finalPostList;
     }
@@ -162,14 +162,14 @@ export default function Posts({scroll}) {
                 let postList = createPostArray();
                 postList = addHotRating(postList);
                 // console.log(postList);
-                if (currentSort === "New") {
+                if (currentSort === "new") {
                     console.log("new")
                     postList = sortNew(postList);
                     // for (const post of postList) {
                     //     console.log(post.time)
                     // }
                 }
-                if (currentSort === "Likes") {
+                if (currentSort === "likes") {
                     console.log("likes")
                     postList = sortLikes(postList);
                     // for (const post of postList) {

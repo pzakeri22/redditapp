@@ -7,10 +7,6 @@ export default function PostAndComments() {
     const urlExtension = `/r/${url.split('/r/')[1]}`;
     const postId = url.split('/')[6];
 
-    // useEffect(() => {
-    //     dispatch(addCurrentPost(postId));
-    // }, []);
-
     return (
         <main className="post-and-comments">
             <PostWithSubreddit postId={postId}/>

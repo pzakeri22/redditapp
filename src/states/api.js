@@ -33,9 +33,10 @@ export const fetchPosts = createAsyncThunk(
     } 
 )
 
-export const fetchComments = createAsyncThunk( //post = /r/aww/comments/uyp0n2/an_elephant_family_is_sleeping_photographed_by_a/
+export const fetchComments = createAsyncThunk( 
     'comments/loadComments',
     async (post) => { 
+        ////post example = /r/aww/comments/uyp0n2/an_elephant_family_is_sleeping_photographed_by_a/
         const jsonResponse = await fetch(`https://www.reddit.com${post}.json`);
         const response = await jsonResponse.json();
         const comments = response[1].data.children 
@@ -56,9 +57,3 @@ export const fetchComments = createAsyncThunk( //post = /r/aww/comments/uyp0n2/a
         return commentsData;
     }
 )
-
-/*
-"selftext_html": null
- "thumbnail": "https://b.thumbs.redditmedia.com/55bJiOJP6u7rtuY5dpLxHem6YQAi55w1K5u3xCEt-Yk.jpg",
-*/
-

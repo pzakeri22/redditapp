@@ -1,8 +1,7 @@
 import {setFilter, selectFilter, setSort, selectSort} from '../../states/postsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 export default function FilterSort() {
     const dispatch = useDispatch();
@@ -12,7 +11,6 @@ export default function FilterSort() {
 
     const handleFilter = e => {
         navigate("/r/all");
-        console.log(e.target.value)
         dispatch(setFilter(e.target.value));
     }
 
@@ -20,30 +18,29 @@ export default function FilterSort() {
         const sortValue = e.target.value;
         if (sortValue !== currentSort) {
             navigate("/r/all");
-            console.log(e.target.value)
             dispatch(setSort(sortValue));
         }
     }
 
     useEffect(() => {
         let sort = document.getElementById("select-sort");
-        if (currentSort === "Hot" || currentSort === "Default") {
-            sort.selectedIndex = 0;
+        if (currentSort === "hot" || currentSort === "Default") {
+            sort.value = "hot";
         }
-        if (currentSort === "New") {
-            sort.selectedIndex = 1;
+        if (currentSort === "new") {
+            sort.value = "new";
         }
-        if (currentSort === "Likes") {
-            sort.selectedIndex = 2;
+        if (currentSort === "likes") {
+            sort.value = "likes";
         }
     })
 
     return (
         <div className="filter-sort">
             <select name="Sort" onClick={handleSort} id="select-sort">
-                <option value="Hot" selected="selected">Hot</option>
-                <option value="New">New</option>
-                <option value="Likes">Likes</option>
+                <option value="hot">Hot</option>
+                <option value="new">New</option>
+                <option value="likes">Likes</option>
             </select>
             <input type="text" 
                 onChange={handleFilter} 

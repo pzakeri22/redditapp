@@ -1,8 +1,12 @@
-import { render, screen } from '../../test-utils.js';
+import { render} from '../../test-utils.js';
 import LogoBar from './LogoBar.js';
 
-test('renders logo', () => {
+test('renders logo and subreddit', () => {
     render(<LogoBar />);
-    const logoElement = screen.getByAltText(/reddit logo/i);
+
+    const logoElement = document.getElementsByClassName("logo-subreddit")[0];
+    const subredditElement = document.getElementsByClassName("home-subreddit")[0];
+
     expect(logoElement).toBeInTheDocument();
+    expect(subredditElement).toBeInTheDocument();
 });

@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Comment(props) {
 
-    const {key, comment} = props;
+    const {comment} = props;
 
     function htmlDecode(input){
         var e = document.createElement('div');
@@ -23,6 +23,5 @@ export default function Comment(props) {
                 </div>
             </div>
         </section>
-        
     );
 }

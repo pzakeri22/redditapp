@@ -31,52 +31,36 @@ export default function Home() {
 
   useEffect(() => {
     if (homeRedirection) {
-      console.log("homeredirection");
-      dispatch(setSort("Hot"));
+      dispatch(setSort("hot"));
       dispatch(setFilter(""));
       dispatch(setScrollPosition(0));
       dispatch(setHomeRedirection(false));
     }
-  }, [homeRedirection])
 
-  const scrollWindow = () => {
-      console.log("scrollchange");
-      console.log(scrollPosition);
-      window.scrollTo(0, scrollPosition);
-  }
- 
+  }, [homeRedirection, dispatch])
+
   useEffect(() => {
     if (currentFilter !== previousFilter) {
-      console.log("filterChange");
-      console.log(previousFilter);
-      console.log(currentFilter);
       dispatch(setScrollPosition(0)); 
-      scrollWindow();
-      dispatch(setPreviousFilter(currentFilter));
+      dispatch(setPreviousFilter(currentFilter)); //causes re-render which triggers window scroll
     }
-  }, [currentFilter])
+  }, [currentFilter, dispatch])
 
   useEffect(() => {
     if (currentSort !== previousSort) {
-      console.log("sortChange");
-      console.log(previousSort)
-      console.log(currentSort);
-      dispatch(setScrollPosition(0));
-      scrollWindow();
-      dispatch(setPreviousSort(currentSort));
+      dispatch(setScrollPosition(0));  //causes re-render which triggers window scroll
+      dispatch(setPreviousSort(currentSort)); 
     }
-  }, [currentSort])
+  }, [currentSort, dispatch])
 
   useEffect(() => {
-    if (scrollPosition) {
-      scrollWindow();
-    }
+    window.scrollTo(0, scrollPosition);
   })
 
   return (
     <div className="grid">
       <Header/>
-      <ResultsContainer scroll={scrollWindow}/>
+      <ResultsContainer/>
     </div>
   );
 }

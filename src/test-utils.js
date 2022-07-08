@@ -1,5 +1,6 @@
 import React from 'react'
 import {render} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import store from '../src/states/store.js';
 import {Provider} from 'react-redux';
@@ -18,8 +19,7 @@ const AllTheProviders = ({children}) => {
 
 const customRender = (ui, options) => render(ui, {wrapper: AllTheProviders, ...options})
   
-// re-export everything
 export * from '@testing-library/react'
+export {userEvent};
 
-// override render method
 export {customRender as render}

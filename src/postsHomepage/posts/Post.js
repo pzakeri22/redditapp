@@ -5,7 +5,8 @@ import {setScrollPosition } from '../../states/postsSlice.js';
 
 export default function Post(props) {
     
-    const {myKey, post} = props;
+    const {post} = props;
+
     let navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -42,8 +43,6 @@ export default function Post(props) {
     
 
     const handleClick = (e) => {
-        console.log("scrollSet");
-        console.log(window.pageYOffset);
         dispatch(setScrollPosition(window.pageYOffset));
         if (["video", "external-link"].includes(e.target.className)) {
             return;
@@ -55,12 +54,9 @@ export default function Post(props) {
      <section className="post"
         onClick={handleClick}
         style={{cursor: "pointer"}}
-        key={myKey}
-        id={myKey}
     >
         <div className="container">
             <h1>{post.title}</h1>
-            {/* <p className="subreddit">Subreddit: r/{post.subreddit}</p> */}
             {content}
             <div className="additional">
                 <div className="score">
@@ -68,7 +64,7 @@ export default function Post(props) {
                     {post.score}
                 </div>
                 <div className="time">
-                    <img src="/imageBank/wall-clock.png" alt="thumbs up"/>
+                    <img src="/imageBank/wall-clock.png" alt="time posted"/>
                     {timeAgo(post.time)}
                 </div>
                 <div className="no-comments">
