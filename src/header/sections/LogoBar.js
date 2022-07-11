@@ -10,9 +10,9 @@ export default function LogoBar() {
     const location = useLocation();
     const navigate = useNavigate();
 
+
     const handleClick = () => {
         if (location.pathname === "/r/all") { 
-            // window.location.reload();
             navigate("/");
 
         } else {
