@@ -31,9 +31,15 @@ export default function Post(props) {
             break;
         }
         case "image": {
-            content = (
-                <img src={post.image_or_link} className="main-image" alt=""/>
-            );
+            if (post.image_or_link.includes(".gif")) {
+                content = (
+                    <video autoplay loop muted playsinline>
+                        <source src={post.image_or_link} type="video/webm" className="main-image" alt=""/>;
+                    </video>
+                )
+            } else {
+                content = (<img src={post.image_or_link} className="main-image" alt=""/>);
+            }
             break;
         }
         default: {
