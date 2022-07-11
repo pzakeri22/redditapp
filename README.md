@@ -4,12 +4,18 @@
 To build a simplified Reddit web application that allows users to view and search posts provided by Reddit's API.
 
 ## Wireframes
+
+I made the application responsive by developing both mobile and desktop views. These qwere my initial templates for how the page would look.
+
+
 ![mobile homepage wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-mobile-home.png?raw=true)
+From my wireframe I identified a list of components that would need to be built.
+
 ![mobile comments page wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-mobile-route.png?raw=true)
 ![desktop homepage page wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-desktop-home.png?raw=true)
 ![desktop comments page wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-desktop-route.png?raw=true)
 
-- Illustrations
+## Illustrations
 
 - Technologies used
 HTML v5
