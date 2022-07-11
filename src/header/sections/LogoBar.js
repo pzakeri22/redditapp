@@ -12,12 +12,8 @@ export default function LogoBar() {
 
 
     const handleClick = () => {
-        if (location.pathname === "/r/all") { 
+        // if (location.pathname === "/r/all")  
             navigate("/");
-
-        } else {
-            navigate("/");
-        }
         dispatch(setHomeRedirection(true));
     };
     
