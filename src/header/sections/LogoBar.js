@@ -12,9 +12,11 @@ export default function LogoBar() {
 
     const handleClick = () => {
         if (location.pathname === "/r/all") { 
-            window.location.reload();
+            // window.location.reload();
+            navigate("/");
+
         } else {
-            navigate("/r/all");
+            navigate("/");
         }
         dispatch(setHomeRedirection(true));
     };
