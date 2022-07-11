@@ -6,7 +6,7 @@ To build a simplified Reddit web application, that allows users to view and sear
 ## Wireframes
 ![mobile homepage wireframe](https://github.com/pzakeri22/redditapp/blob/main/Reddit-mobile-home.png?raw=true)
 
-![mobile comments page wireframe](https://github.com/[username]/[reponame]/blob/[branch]/Reddit-mobile-route.png?raw=true)
+![mobile comments page wireframe](https://github.com/pzakeri22/redditapp/tree/main/public/imageBank/Wireframes/Reddit-mobile-route.png?raw=true)
 ![desktop homepage page wireframe](https://github.com/[username]/[reponame]/blob/[branch]/Reddit-desktop-home.png?raw=true)
 ![desktop comments page wireframe](https://github.com/[username]/[reponame]/blob/[branch]/Reddit-desktop-route.png?raw=true)
 
