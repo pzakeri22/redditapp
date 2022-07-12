@@ -35,12 +35,12 @@ Changes to all wireframes: After styling most of my app I noticed there was no w
 
 ## Sample Screenshots
 
-### Finished Homepage
+### Homepage on Desktop View
 ![mobile homepage screenshot](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/illustrations/homepage-screenshot.png?raw=true)
 
 This displays roughly the top 25 posts found on reddit's own homepage (r/all).
 
-### Finished Comments Page
+### Comments Page on Desktop View
 
 ![comments page screenshot](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/illustrations/comments-screenshot.png?raw=true)
 
