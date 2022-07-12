@@ -1,15 +1,11 @@
 import { useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { setHomeRedirection } from '../../states/postsSlice.js';
-import {useLocation } from "react-router-dom";
-
 
 export default function LogoBar() {
     
     const dispatch = useDispatch();
-    const location = useLocation();
     const navigate = useNavigate();
-
 
     const handleClick = () => {
         // if (location.pathname === "/r/all")  
@@ -19,12 +15,12 @@ export default function LogoBar() {
     
     return (
         <div className="logo-subreddit">
-                <img 
-                    src="../../../../../imageBank/redditfulllogo.png" 
-                    alt="reddit logo" 
-                    className="logo"
-                    onClick={handleClick}
-                />
+            <img 
+                src="../../../../../imageBank/redditfulllogo.png" 
+                alt="reddit logo" 
+                className="logo"
+                onClick={handleClick}
+            />
             <h2 className="home-subreddit">
                 r/all
             </h2>

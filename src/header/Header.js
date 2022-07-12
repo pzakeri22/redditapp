@@ -1,5 +1,7 @@
 import LogoBar from './sections/LogoBar.js';
-import FilterSort from './sections/FilterSort.js';
+import Filter from './sections/filterSort/Filter.js';
+import Sort from './sections/filterSort/Sort.js';
+
 import { useLayoutEffect } from 'react';
 
 export default function Header() {
@@ -17,7 +19,10 @@ export default function Header() {
     return (
         <header>
             <LogoBar/>
-            <FilterSort/>
+            <section className="filter-sort">
+                <Sort/>
+                <Filter/>
+            </section>
         </header>
     );
 }

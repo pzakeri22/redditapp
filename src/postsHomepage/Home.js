@@ -1,7 +1,7 @@
-import './App.css';
-import Header from './header/Header.js';
-import ResultsContainer from '../src/postsHomepage/ResultsContainer.js';
-import './index.css';
+import '../App.js'
+import Header from '../header/Header.js';
+import ResultsContainer from './ResultsContainer.js';
+import '../index.css';
 import {useSelector, useDispatch} from "react-redux";
 import React, { useEffect } from 'react';
 import { 
@@ -17,7 +17,7 @@ import {
   setPreviousSort, 
   setPreviousFilter, 
   selectPreviousFilter
-} from './states/postsSlice';
+} from '../states/postsSlice';
 
 export default function Home() {
 

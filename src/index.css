@@ -70,7 +70,9 @@ header .logo:hover {
   cursor: pointer;
 }
 
-header .filter-sort {
+
+
+.filter-sort {
   display: flex;
   min-height: 1.7rem;
   height: 5vh;
@@ -81,7 +83,7 @@ header .filter-sort {
   max-width: 30rem;
 }
 
-header .filter-sort select {
+#sort {
   background-color: #FFFFFF;
   border: 2px solid rgb(146, 183, 237);
   color: #111827;
@@ -92,7 +94,7 @@ header .filter-sort select {
   width: 6rem;
 }
 
-header .filter {
+.filter {
   height: 100%;
   padding: 0 0.5rem 0 0.5rem;
   width: 70%;
@@ -100,16 +102,16 @@ header .filter {
   border: 2px solid rgb(236, 88, 0, 0.6);
  }
 
-header .filter-sort select:hover {
+#sort:hover {
   border: 3px solid rgb(146, 183, 237);
 }
 
-header .filter-sort select:focus, header .filter:focus  {
+#sort:focus, .filter:focus  {
   outline: none;
 }
 
-header .filter:hover, 
-header .filter:focus {
+.filter:hover, 
+.filter:focus {
   border: 3px solid rgb(236, 88, 0, 0.6);
 }
 

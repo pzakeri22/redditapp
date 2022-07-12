@@ -6,7 +6,6 @@ import store from '../src/states/store.js';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from "react-router-dom";
 
-
 const AllTheProviders = ({children}) => {
     return (
         <Provider store={store}>

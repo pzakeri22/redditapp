@@ -4,7 +4,7 @@ import './index.css';
 import {useSelector} from 'react-redux';
 import {selectPosts} from './states/postsSlice.js';
 import PostWithCommentsRoute from './postWithCommentsRoute/Container.js'
-import Home from './Home.js';
+import Home from './postsHomepage/Home.js'
 import {
   BrowserRouter,
   Routes,
