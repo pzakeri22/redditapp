@@ -12,7 +12,7 @@ I made the app responsive by developing both mobile and desktop views to suit al
 
 ![mobile homepage wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-mobile-home.png?raw=true)
 
-Breaking this wireframe down helped me identify a list of components that would need to be built. In the end I didn't split the Post component into seperate sections because the features inside were very simple and creating separate components would have overcomplicated the app rather than simplifying it.
+Breaking this wireframe down helped me identify a list of components that would need to be built. In the end I didn't split the Post component into seperate sections because the features inside were very simple and creating separate components would have overcomplicated the file structure.
 
 ### Mobile Comments Page
 
@@ -38,11 +38,11 @@ Changes to all wireframes: After styling most of my app I noticed there was no w
 ### Finished Homepage
 ![mobile homepage screenshot](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/illustrations/homepage-screenshot.png?raw=true)
 
-It displays roughly the top 25 posts found on reddit's own homepage (r/all).
+This displays roughly the top 25 posts found on reddit's own homepage (r/all).
 
 ### Finished Comments Page
 
-![comments page screenshot](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/illustrations/comments-screenshot.png.png?raw=true)
+![comments page screenshot](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/illustrations/comments-screenshot.png?raw=true)
 
 When you click through any post on the homepage, the corresponding comments page is loaded, displaying the same post but with the subreddit name added and comments underneath.
 
@@ -74,5 +74,5 @@ Although I implemented basic testing with Jest and React Testing Library, in the
 
 ## Launch
 
-To launch this app, visit https://myredditminimal.netlify.app/
-If you identify any issues, please feel free to contact me on p.zakeri22@hotmail.com.
+To launch this app, please visit https://myredditminimal.netlify.app/.
+If you identify any issues, feel free to contact me on p.zakeri22@hotmail.com.
