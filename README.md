@@ -30,9 +30,8 @@ One change I made here was removing the subreddit from the homepage. Having less
 
 ![desktop comments page wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-desktop-route.png?raw=true)
 
-
 Changes to all wireframes: After styling most of my app I noticed there was no way for the user to tell which part of reddit they were looking at, so I added the subreddit "r/all" to the header. 
-
+<br/><br/> 
 
 ## Sample Screenshots
 
