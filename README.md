@@ -6,7 +6,7 @@ To build a simplified Reddit web application that allows users to view posts and
 
 ## Wireframes
 
-I made the app responsive by developing both mobile and desktop views to suit all devices. Desktop view was implemented for devices with a screen width larger than 848px. Below are my initial wireframes built on invisionapp showing how the website would look on both devices. 
+I made the app responsive by developing both mobile and desktop views to suit all devices. Desktop view was implemented for devices with a screen width larger than 848px. Below are my initial wireframes built on Invision showing how the website would look on both devices. 
 
 ### Mobile Homepage
 
@@ -30,8 +30,9 @@ One change I made here was removing the subreddit from the homepage. Having less
 
 ![desktop comments page wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-desktop-route.png?raw=true)
 
----
+
 Changes to all wireframes: After styling most of my app I noticed there was no way for the user to tell which part of reddit they were looking at, so I added the subreddit "r/all" to the header. 
+
 
 ## Sample Screenshots
 
