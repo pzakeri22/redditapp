@@ -6,7 +6,7 @@ To build a simplified Reddit web application that allows users to view posts and
 
 ## Wireframes
 
-I made the app responsive by developing both mobile and desktop views to suit all devices. Desktop view was eventually implemented for devices with a screen width larger than 848px. Below are my initial wireframes for how the website would look on both devices. 
+I made the app responsive by developing both mobile and desktop views to suit all devices. Desktop view was implemented for devices with a screen width larger than 848px. Below are my initial wireframes built on invisionapp showing how the website would look on both devices. 
 
 ### Mobile Homepage
 
@@ -24,7 +24,7 @@ I designed the look of the app using mobile-first design. This meant I was const
 
 ![desktop homepage page wireframe](https://github.com/pzakeri22/redditapp/blob/main/public/imageBank/Wireframes/Reddit-desktop-home.png?raw=true)
 
-One change I made here was removing the subreddit from the homepage. Having less information on the homepage allows users to quickly skim through more posts or find one they want to click on. Also, including the subreddit on both pages meant that on smaller devices, there was no visible difference between the homepage and comments page until you scrolled down the page. This made it trickier to identify when the comments page had loaded, given the seamless loading experience with react router.
+One change I made here was removing the subreddit from the homepage. Having less information on the homepage improves user experience as it allows users to skim through posts more quickly. Also, including the subreddit on both pages meant that on smaller devices, there was no visible difference between the homepage and comments page until you scrolled down the page. This made it trickier to identify when the comments page had loaded, given the seamless loading experience with react router.
 
 ### Desktop Comments Page
 
@@ -54,6 +54,7 @@ When you click through any post on the homepage, the corresponding comments page
 - React v18.0.1
 - Redux v4.2.0
 - React Router v6.3.0
+- Markdown
 - Jest v28.1
 - React Testing Library v13.2.0
 - Git and Github
