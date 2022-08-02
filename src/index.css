@@ -11,6 +11,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: rgb(38, 38, 38);
+
 }
 
 .grid {
@@ -23,6 +24,7 @@ body {
   grid-template-rows: auto 1fr;
   gap: 0.5rem;
   justify-content: center;
+ 
 }
 
 header {
@@ -39,6 +41,7 @@ header {
   z-index: 10;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+ 
 }
 
 header .logo-subreddit {
@@ -231,6 +234,7 @@ header .logo:hover {
   max-width: 97vw; 
   min-width: 0;
   margin-bottom: 1.5rem;
+  margin-top: 1rem;  
 }
 
 .post {
@@ -355,6 +359,8 @@ header .logo:hover {
   margin-bottom: 1.5rem;
   background-color: rgb(255, 255, 255);
   animation: .5s linear 0s 1 fadeComments;
+  margin-top: 1rem;  
+ 
 }
 
 @keyframes fadeComments {
@@ -420,7 +426,6 @@ header .logo:hover {
 .post-with-subreddit .container .external-link {
   max-width: 93%;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
 }
