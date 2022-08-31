@@ -14,8 +14,7 @@ const postsSlice = createSlice({
         filter: "",
         previousFilter: "",
         modifiedPosts: [],
-        filteredPosts: [],
-        homeRedirection: false
+        filteredPosts: []
     },
     reducers: {
       addCurrentPost: (state, action) => {
@@ -44,9 +43,6 @@ const postsSlice = createSlice({
       setFilteredPosts : (state, action) => {
         state.filteredPosts = action.payload;
       },
-      setHomeRedirection : (state, action) => {
-        state.homeRedirection = action.payload;
-      }
     },
     extraReducers: {
         [fetchPosts.pending]: (state) => {
@@ -75,7 +71,6 @@ export const selectCurrentPost = state => state.posts.currentPostId;
 export const selectScrollPosition = state => state.posts.scrollPosition;
 export const selectModifiedPosts = state => state.posts.modifiedPosts;
 export const selectFilteredPosts = state => state.posts.filteredPosts;
-export const selectHomeRedirection = state => state.posts.homeRedirection;
 
 export const { 
   setFilter,
@@ -85,8 +80,7 @@ export const {
   addCurrentPost,
   setScrollPosition,
   setModifiedPosts,
-  setFilteredPosts,
-  setHomeRedirection
+  setFilteredPosts
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
