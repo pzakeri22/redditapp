@@ -22,22 +22,22 @@ import {
 export default function Home() {
 
   const scrollPosition = useSelector(selectScrollPosition);
-  const homeRedirection = useSelector(selectHomeRedirection);
+  // const homeRedirection = useSelector(selectHomeRedirection);
   const currentFilter = useSelector(selectFilter);
   const currentSort = useSelector(selectSort);
   const previousSort = useSelector(selectPreviousSort);
   const previousFilter = useSelector(selectPreviousFilter);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (homeRedirection) {
-      dispatch(setSort("hot"));
-      dispatch(setFilter(""));
-      dispatch(setScrollPosition(0));
-      dispatch(setHomeRedirection(false));
-    }
+  // useEffect(() => {
+  //   if (homeRedirection) {
+  //     dispatch(setSort("hot"));
+  //     dispatch(setFilter(""));
+  //     dispatch(setScrollPosition(0));
+  //     dispatch(setHomeRedirection(false));
+  //   }
 
-  }, [homeRedirection, dispatch])
+  // }, [homeRedirection, dispatch])
 
   useEffect(() => {
     if (currentFilter !== previousFilter) {
@@ -56,6 +56,13 @@ export default function Home() {
   useEffect(() => {
     window.scrollTo(0, scrollPosition);
   })
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   const background = document.getElementsByTagName("body")[0];
+  //   background.style.backgroundColor  = "rgb(255, 243, 232)";  
+  //   return () => { background.style.backgroundColor  = "white";}
+  // });
 
   return (
     <div className="grid">
