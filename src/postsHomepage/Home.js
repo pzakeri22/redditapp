@@ -14,7 +14,6 @@ import {
   setPreviousFilter, 
   selectPreviousFilter
 } from '../states/postsSlice';
-
 export default function Home() {
 
   const scrollPosition = useSelector(selectScrollPosition);
