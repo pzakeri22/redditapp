@@ -1,5 +1,7 @@
 # Reddit Minimal App - README 
 
+https://github.com/pzakeri22/redditapp/assets/92223059/ca00bfcd-5aad-49b7-87e6-4a09db8c7c54
+
 ## Aim
 
 To build a simplified Reddit web application that allows users to view posts and comments provided by Reddit's API.
