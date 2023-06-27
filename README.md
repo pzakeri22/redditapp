@@ -1,6 +1,6 @@
 # Reddit Minimal App - README 
 
-https://github.com/pzakeri22/redditapp/assets/92223059/ca00bfcd-5aad-49b7-87e6-4a09db8c7c54
+https://github.com/pzakeri22/redditapp/assets/92223059/60e2a416-6735-492c-b15d-3bcf73328dd2
 
 ## Aim
 
